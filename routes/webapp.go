@@ -1,0 +1,53 @@
+package routes
+
+import (
+	"log"
+	"net/http"
+	"pos-webapp/controllers"
+
+	"github.com/gin-gonic/gin"
+)
+
+func WebAppRoute() {
+	router := gin.Default()
+
+	// Memuat template dengan ekstensi .tmpl dari direktori view
+	router.LoadHTMLGlob("view/*.tmpl")
+
+	// Menyajikan file statis dari direktori assets
+	router.Static("/assets", "./assets")
+
+	router.GET("/register", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "Register.tmpl", nil) // Render template Register.tmpl
+	})
+
+	v1 := router.Group("api/v1/")
+	{
+		devs := v1.Group("/dev-only/")
+		{
+			roleDev := devs.Group("/role/")
+			{
+				roleDev.POST("/create", controllers.CreateDevRole)
+				roleDev.GET("/list", controllers.ListDevRole)
+				roleDev.PUT("/update/:id", controllers.UpdateDevRole)
+				roleDev.DELETE("/hapus/:id", controllers.HapusDevRole)
+			}
+
+			subscriptionDev := devs.Group("/master-subscription/")
+			{
+				subscriptionDev.POST("/create", controllers.CreateDevSubscription)
+				subscriptionDev.GET("/list", controllers.ListDevSubcription)
+				subscriptionDev.PUT("/update/:id", controllers.UpdateDevSubscription)
+				subscriptionDev.DELETE("/hapus/:id", controllers.HapusDevSubscription)
+			}
+		}
+	}
+
+	// Menampilkan log server berjalan dengan port 8080
+	log.Println("Server started on: http://127.0.0.1:8080")
+
+	// Menjalankan server ke port 8080
+	if err := router.Run(":8080"); err != nil {
+		log.Fatalf("Failed to start server: %v", err)
+	}
+}
