@@ -15,4 +15,5 @@ type User struct {
 	Password    string    `gorm:"type:varchar(200)"`
 	Phone       string    `gorm:"type:varchar(20)"`
 	IsVerified  bool      `gorm:"type:bool"`
+	Kode        string    `gorm:"type:varchar(10)"`
 }

@@ -4,12 +4,12 @@ import "net/smtp"
 
 // Fungsi untuk mengirim email
 func SendRegisEmail(to string, subject string, body string) error {
-	from := "your_email@example.com" // Ganti dengan email Anda
-	password := "your_password"      // Ganti dengan password email Anda
+	from := "bimasaktiputra95@gmail.com" // Ganti dengan email Anda
+	password := "lqsq dpej owqi qlts"    // Ganti dengan password email Anda
 
 	// Set up the SMTP server configuration
-	smtpHost := "smtp.example.com" // Ganti dengan SMTP host Anda
-	smtpPort := "587"              // Port SMTP (umumnya 587 untuk TLS)
+	smtpHost := "smtp.gmail.com" // Ganti dengan SMTP host Anda
+	smtpPort := "587"            // Port SMTP (umumnya 587 untuk TLS)
 
 	// Buat message
 	message := []byte("Subject: " + subject + "\r\n" +

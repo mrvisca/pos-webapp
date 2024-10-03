@@ -87,6 +87,7 @@ func RegisterAcc(c *gin.Context) {
 		Password:    inp_pass,
 		Phone:       phone,
 		IsVerified:  false,
+		Kode:        helpers.RandomString(6),
 	}
 	settings.DB.Create(&user)
 
@@ -97,6 +98,35 @@ func RegisterAcc(c *gin.Context) {
 		Gudang: gudang,
 	}
 
+	// Deklarasi variabel untuk kebutuhan email verifikasi akun baru pengguna
+	link := "http://localhost:8080/api/v1/autentikasi/register/" + user.Kode
+	to := user.Email
+	subject := "Email verifikasi akun baru!"
+	body := "Klik link ini untuk melakukan verifikasi akun baru! \n" + link
+
+	// Kirim email verifikasi akun baru ke email pengguna yang sudah terdaftar
+	err := helpers.SendRegisEmail(to, subject, body)
+	if err != nil {
+		helpers.ElorResponse(c, err.Error())
+		return
+	}
+
 	// Panggil helper response untuk menampilkan hasil response
 	helpers.SuksesWithDataResponse(c, "Berhasil melakukan pendaftaran akun baru!", response)
+}
+
+// Fungsi test email pengguna
+func TestKirimEmail(c *gin.Context) {
+	to := c.PostForm("to")
+	subject := c.PostForm("subject")
+	body := c.PostForm("body")
+
+	err := helpers.SendRegisEmail(to, subject, body)
+	if err != nil {
+		c.JSON(500, gin.H{"status": "failed", "message": err.Error()})
+		return
+	}
+
+	c.JSON(200, gin.H{"status": "success", "message": "Email sent successfully"})
+
 }

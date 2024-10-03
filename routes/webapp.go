@@ -17,12 +17,17 @@ func WebAppRoute() {
 	// Menyajikan file statis dari direktori assets
 	router.Static("/assets", "./assets")
 
+	// Route Website
+	router.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "Login.tmpl", nil) // Render template Login.tmpl
+	})
 	router.GET("/register", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "Register.tmpl", nil) // Render template Register.tmpl
 	})
 
 	v1 := router.Group("api/v1/")
 	{
+		// Route khusus development
 		devs := v1.Group("/dev-only/")
 		{
 			roleDev := devs.Group("/role/")
@@ -40,6 +45,14 @@ func WebAppRoute() {
 				subscriptionDev.PUT("/update/:id", controllers.UpdateDevSubscription)
 				subscriptionDev.DELETE("/hapus/:id", controllers.HapusDevSubscription)
 			}
+
+			devs.POST("/kirim-email", controllers.TestKirimEmail)
+		}
+
+		// Route untuk aplikasi
+		oth := v1.Group("/autentikasi/")
+		{
+			oth.POST("/pendaftaran", controllers.RegisterAcc)
 		}
 	}
 
