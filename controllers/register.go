@@ -59,7 +59,7 @@ func RegisterAcc(c *gin.Context) {
 		Branchlimit: 1,
 		Tipe:        tipe,
 	}
-	settings.DB.Create(&bisnis)
+	settings.DB.Create(&simbis)
 
 	// Agar tidak elor
 	_ = simbis.Name

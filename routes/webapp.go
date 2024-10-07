@@ -5,11 +5,16 @@ import (
 	"net/http"
 	"pos-webapp/controllers"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
 func WebAppRoute() {
+	// Memanggil fungsi route dari framework gin golang
 	router := gin.Default()
+
+	// Menambahkan cors pada settingan route gin golang
+	router.Use(cors.Default())
 
 	// Memuat template dengan ekstensi .tmpl dari direktori view
 	router.LoadHTMLGlob("view/*.tmpl")
@@ -53,6 +58,7 @@ func WebAppRoute() {
 		oth := v1.Group("/autentikasi/")
 		{
 			oth.POST("/pendaftaran", controllers.RegisterAcc)
+			oth.POST("/login", controllers.LoginCheck)
 		}
 	}
 
