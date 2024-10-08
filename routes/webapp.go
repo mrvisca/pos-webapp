@@ -63,6 +63,7 @@ func WebAppRoute() {
 		{
 			oth.POST("/pendaftaran", controllers.RegisterAcc)
 			oth.POST("/login", controllers.LoginCheck)
+			oth.GET("/verifikasi/:kode", controllers.Verifikasi)
 		}
 
 		dashboardpage := v1.Group("/dashboard/")

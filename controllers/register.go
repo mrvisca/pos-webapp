@@ -99,7 +99,7 @@ func RegisterAcc(c *gin.Context) {
 	}
 
 	// Deklarasi variabel untuk kebutuhan email verifikasi akun baru pengguna
-	link := "http://localhost:8080/api/v1/autentikasi/register/" + user.Kode
+	link := "http://localhost:8080/api/v1/autentikasi/verifikasi/" + user.Kode
 	to := user.Email
 	subject := "Email verifikasi akun baru!"
 	body := "Klik link ini untuk melakukan verifikasi akun baru! \n" + link
