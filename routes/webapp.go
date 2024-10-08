@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 	"pos-webapp/controllers"
+	"pos-webapp/middleware"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -28,6 +29,9 @@ func WebAppRoute() {
 	})
 	router.GET("/register", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "Register.tmpl", nil) // Render template Register.tmpl
+	})
+	router.GET("/aplikasi/dashboard", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "Dashboard.tmpl", nil) // Render template Dashboard.tmpl
 	})
 
 	v1 := router.Group("api/v1/")
@@ -60,6 +64,14 @@ func WebAppRoute() {
 			oth.POST("/pendaftaran", controllers.RegisterAcc)
 			oth.POST("/login", controllers.LoginCheck)
 		}
+
+		dashboardpage := v1.Group("/dashboard/")
+		{
+			dashboardpage.GET("/profile-check", middleware.IsAuth(), controllers.ProfilePengguna)
+		}
+
+		// Route Logout
+		v1.GET("logout", controllers.Logout)
 	}
 
 	// Menampilkan log server berjalan dengan port 8080

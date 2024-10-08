@@ -22,6 +22,8 @@ func createToken(user *models.User) string {
 		"role_id":      user.RoleId,
 		"business_id":  user.BusinessId,
 		"warehouse_id": user.WarehouseId,
+		"name":         user.Name,
+		"email":        user.Email,
 		"exp":          time.Now().AddDate(0, 0, 7).Unix(),
 		"iat":          time.Now().Unix(),
 	})
@@ -68,5 +70,5 @@ func LoginCheck(c *gin.Context) {
 	token := createToken(&user)
 
 	// Tambahkan response sukses untuk menampilkan response dan juga token autentikasi
-	helpers.SuksesLogin(c, "Login aplikasi berhasil dilakukan!", token)
+	helpers.SuksesLogin(c, "Login aplikasi berhasil dilakukan!", token, int64(user.RoleId))
 }

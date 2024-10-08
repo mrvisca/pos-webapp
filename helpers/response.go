@@ -32,11 +32,12 @@ func SuksesResponse(c *gin.Context, message string) {
 	})
 }
 
-func SuksesLogin(c *gin.Context, message string, token string) {
+func SuksesLogin(c *gin.Context, message string, token string, roleid int64) {
 	c.JSON(201, gin.H{
 		"status":  "Sukses",
 		"message": message,
 		"token":   token,
+		"role_id": roleid,
 	})
 }
 

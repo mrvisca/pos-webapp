@@ -62,13 +62,32 @@ License: You must have a valid license purchased only from themeforest(the above
                             <a href="">Lupa Password?</a> 
                         </div>
                         <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                            <button class="btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Login</button>
+                            <button class="btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top btn-login">Login</button>
                             <button class="btn btn-outline-secondary py-3 px-4 w-full xl:w-32 mt-3 xl:mt-0 align-top btn-register">Pendaftaran</button>
                         </div>
                         <div class="intro-x mt-10 xl:mt-24 text-slate-600 dark:text-slate-500 text-center xl:text-left"> By signin up, you agree to our <a class="text-primary dark:text-slate-200" href="">Terms and Conditions</a> & <a class="text-primary dark:text-slate-200" href="">Privacy Policy</a> </div>
                     </div>
                 </div>
                 <!-- END: Login Form -->
+                <!-- END: Notification Content -->
+                <!-- BEGIN: Success Login Notification Content -->
+                <div id="success-login-notification-content" class="toastify-content hidden flex">
+                    <i class="text-success" data-lucide="check-circle"></i> 
+                    <div class="ml-4 mr-4">
+                        <div class="font-medium">Login akun berhasil!</div>
+                        <div class="text-slate-500 mt-1 pesan-sukses"></div>
+                    </div>
+                </div>
+                <!-- END: Success Notification Content -->
+                <!-- BEGIN: Failed Login Notification Content -->
+                <div id="fail-login-notification-content" class="toastify-content hidden flex">
+                    <i class="text-success" data-lucide="x-circle"></i> 
+                    <div class="ml-4 mr-4">
+                        <div class="font-medium">Login akun gagal!</div>
+                        <div class="text-slate-500 mt-1 pesan-gagal"></div>
+                    </div>
+                </div>
+                <!-- END: Notification Content -->
             </div>
         </div>
         
@@ -83,7 +102,160 @@ License: You must have a valid license purchased only from themeforest(the above
                 jQuery('.btn-register').click(function() {
                     window.location.href = "http://localhost:8080/register"; // Replace with your desired destination URL
                 })
-            });
+
+                // Fungsi untuk mendapatkan nilai token pada cookie
+                function getCookie(name) {
+                    var cookieName = name + "=";
+                    var decodedCookie = decodeURIComponent(document.cookie);
+                    var cookieArray = decodedCookie.split(';');
+
+                    for (var i = 0; i < cookieArray.length; i++) {
+                        var cookie = cookieArray[i];
+                        while (cookie.charAt(0) === ' ') {
+                            cookie = cookie.substring(1);
+                        }
+                        if (cookie.indexOf(cookieName) === 0) {
+                            return cookie.substring(cookieName.length, cookie.length);
+                        }
+                    }
+                }
+
+                var token = getCookie('token');
+
+                // Cek Token
+                if (token) {
+                    // Token ada dalam cookie, lakukan tindakan yang sesuai
+                    // console.log('Token:', token);
+
+                    // Tembak Api check token untuk memastikan token masih aktif atau tidak
+                    var url = 'http://localhost:8080/api/v1/dashboard/profile-check';
+                    fetch(url, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': 'Bearer ' + token
+                        }
+                    }).then(response => response.json()).then(hasil => {
+                        if(hasil.data.RoleId == 2 || hasil.data.RoleId == 3)
+                        {
+                            window.location.href = "http://localhost:8080/aplikasi/dashboard";
+                        }
+                    }).catch(error => {
+                        console.log(error);
+                    });
+                }
+
+                // Buat fungsi tombol login untuk pengguna
+                jQuery('.btn-login').click(function() {
+                    // Get form data
+                    var email = jQuery(".form-email").val();
+                    var password = jQuery(".form-password").val();
+
+                    var formData = new FormData();
+                    formData.append('email', email);
+                    formData.append('password', password);
+
+                    // Kirim permintaan pembaruan produk ke API
+                    jQuery.ajax({
+                        url: 'http://localhost:8080/api/v1/autentikasi/login',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            if (response.status == 'Sukses')
+                            {
+                                // Fungsi untuk mengatur cookie
+                                function setCookie(name, value, days) {
+                                    var expires = "";
+
+                                    if (days) {
+                                        var date = new Date();
+                                        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                                        expires = "; expires=" + date.toUTCString();
+                                    }
+
+                                    document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
+                                }
+
+                                // Fungsi untuk mendapatkan nilai cookie
+                                function getCookie(name) {
+                                    var cookieName = name + "=";
+                                    var decodedCookie = decodeURIComponent(document.cookie);
+                                    var cookieArray = decodedCookie.split(';');
+
+                                    for (var i = 0; i < cookieArray.length; i++) {
+                                        var cookie = cookieArray[i];
+                                        while (cookie.charAt(0) === ' ') {
+                                            cookie = cookie.substring(1);
+                                        }
+                                        if (cookie.indexOf(cookieName) === 0) {
+                                            return cookie.substring(cookieName.length, cookie.length);
+                                        }
+                                    }
+
+                                    return null;
+                                }
+
+                                // Simpan token ke cookie
+                                var token = response.token;
+                                setCookie('token', token, 14); // Simpan cookie selama 7 hari
+
+                                // Tampilkan notifikasi toast sukses
+                                jQuery('.pesan-sukses').text(response.message);
+                                Toastify({
+                                    node: $("#success-login-notification-content")
+                                        .clone()
+                                        .removeClass("hidden")[0],
+                                    duration: 3000,
+                                    newWindow: true,
+                                    close: true,
+                                    gravity: "top",
+                                    position: "right",
+                                    stopOnFocus: true,
+                                }).showToast();
+
+                                if(response.role_id == 2 || response.role_id == 3)
+                                {
+                                    // Redirect ke halaman dashboard admin
+                                    setTimeout(function() {
+                                        window.location.href = "http://localhost:8080/aplikasi/dashboard"; // Replace with your desired destination URL
+                                    }, 3000); // 3000 milliseconds = 3 seconds
+                                }
+                            }else{
+                                jQuery('.pesan-gagal').text(response.message);
+                                Toastify({
+                                    node: $("#fail-login-notification-content")
+                                        .clone()
+                                        .removeClass("hidden")[0],
+                                    duration: -1,
+                                    newWindow: true,
+                                    close: true,
+                                    gravity: "top",
+                                    position: "right",
+                                    stopOnFocus: true,
+                                }).showToast();
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            // Show the modal
+                            // Parsing responseText sebagai JSON
+                            var hpes = JSON.parse(xhr.responseText);
+                            jQuery('.pesan-gagal').text(hpes.message);
+                            Toastify({
+                                node: $("#fail-login-notification-content")
+                                    .clone()
+                                    .removeClass("hidden")[0],
+                                duration: 5000,
+                                newWindow: true,
+                                close: true,
+                                gravity: "top",
+                                position: "right",
+                                stopOnFocus: true,
+                            }).showToast();
+                        }
+                    });
+                })
+            })
         </script>
         <!-- END: JS Assets-->
     </body>

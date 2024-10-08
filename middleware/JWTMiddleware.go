@@ -38,6 +38,8 @@ func checkJWT(middlewareAdmin bool) gin.HandlerFunc {
 				c.Set("jwt_role_id", claims["role_id"])
 				c.Set("jwt_business_id", claims["business_id"])
 				c.Set("jwt_warehouse_id", claims["warehouse_id"])
+				c.Set("jwt_name", claims["name"])
+				c.Set("jwt_email", claims["email"])
 
 				if middlewareAdmin && RoleId == 0 {
 					helpers.ElorResponse(c, "Akses dibatasi, anda tidak memiliki akses ini!")
