@@ -69,6 +69,8 @@ func WebAppRoute() {
 		dashboardpage := v1.Group("/dashboard/")
 		{
 			dashboardpage.GET("/profile-check", middleware.IsAuth(), controllers.ProfilePengguna)
+			dashboardpage.GET("/support/cabang", middleware.IsAuth(), controllers.SupportListCabang)
+			dashboardpage.PUT("/ubah-cabang/:id", middleware.IsAuth(), controllers.UbahPilihCabang)
 		}
 
 		// Route Logout

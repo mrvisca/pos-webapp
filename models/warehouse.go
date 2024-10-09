@@ -15,3 +15,8 @@ type Warehouse struct {
 	EndDate        string
 	IsDefault      bool `gorm:"type:boolean"`
 }
+
+type SupportCabang struct {
+	ID   uint   `json:"id"`
+	Name string `json:"name"`
+}

@@ -1,41 +1,12 @@
 package controllers
 
 import (
-	"fmt"
-	"os"
 	"pos-webapp/helpers"
 	"pos-webapp/models"
 	"pos-webapp/settings"
-	"time"
 
-	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 )
-
-var JWT_SECRET = os.Getenv("JWT_SECRET")
-
-func createToken(user *models.User) string {
-	// Create a new token object, specifying signing method and the claims
-	// you would like it to contain
-	jwtToken := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"user_id":      user.ID,
-		"role_id":      user.RoleId,
-		"business_id":  user.BusinessId,
-		"warehouse_id": user.WarehouseId,
-		"name":         user.Name,
-		"email":        user.Email,
-		"exp":          time.Now().AddDate(0, 0, 7).Unix(),
-		"iat":          time.Now().Unix(),
-	})
-
-	// Sign and get the completed encoded token as a string using the secret
-	tokenString, err := jwtToken.SignedString([]byte(os.Getenv("JWT_SECRET")))
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	return tokenString
-}
 
 func LoginCheck(c *gin.Context) {
 	// Ambil body request form login dan deklarasikan pada masing-masing variabel
@@ -67,7 +38,7 @@ func LoginCheck(c *gin.Context) {
 	}
 
 	// Buat token bila data sudah sesuai dengan data dalam database
-	token := createToken(&user)
+	token := helpers.CreateToken(&user)
 
 	// Tambahkan response sukses untuk menampilkan response dan juga token autentikasi
 	helpers.SuksesLogin(c, "Login aplikasi berhasil dilakukan!", token, int64(user.RoleId))
