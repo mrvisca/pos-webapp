@@ -15,3 +15,8 @@ type Resrole struct {
 	Desc     string `json:"desc"`
 	IsActive bool   `json:"is_active"`
 }
+
+type SupportRole struct {
+	ID   uint   `json:"id"`
+	Name string `json:"name"`
+}

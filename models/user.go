@@ -17,3 +17,18 @@ type User struct {
 	IsVerified  bool      `gorm:"type:bool"`
 	Kode        string    `gorm:"type:varchar(10)"`
 }
+
+type Staff struct {
+	ID            uint   `json:"id"`
+	RoleId        uint   `json:"role_id"`
+	RoleName      string `json:"role_name"`
+	BusinessId    uint   `json:"business_id"`
+	BusinessName  string `json:"business_name"`
+	WarehouseId   uint   `json:"warehouse_id"`
+	WarehouseName string `json:"warehouse_name"`
+	Name          string `json:"name"`
+	Email         string `json:"email"`
+	Phone         string `json:"phone"`
+	IsVerified    bool   `json:"is_verified"`
+	Kode          string `json:"kode"`
+}
