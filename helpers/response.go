@@ -48,3 +48,12 @@ func ElorWithData(c *gin.Context, message string, elor interface{}) {
 		"elor":    elor,
 	})
 }
+
+func ListPaginate(c *gin.Context, data interface{}, totalRecords interface{}, draw int) {
+	c.JSON(200, gin.H{
+		"draw":            draw,
+		"recordsTotal":    totalRecords,
+		"recordsFiltered": totalRecords,
+		"data":            data,
+	})
+}
