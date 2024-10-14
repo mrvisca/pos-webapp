@@ -97,7 +97,7 @@ func TambahPelanggan(c *gin.Context) {
 	// Definisikan model client kedalam variabel client
 	var client models.Client
 
-	if !settings.DB.First(&client, "email = ?", email).RecordNotFound() {
+	if !settings.DB.First(&client, "email LIKE ?", "%"+email+"%").RecordNotFound() {
 		helpers.ElorResponse(c, "Email sudah digunakan oleh pelanggan lain!")
 		c.Abort()
 		return
@@ -122,4 +122,67 @@ func TambahPelanggan(c *gin.Context) {
 
 	// Panggil helper response untuk menampilkan hasil response
 	helpers.SuksesWithDataResponse(c, "Berhasil membuat data pelanggan baru!", response)
+}
+
+func UpdatePelanggan(c *gin.Context) {
+	// Klasifikasi param id kedalam variabel id
+	id := c.Param("id")
+
+	// Klasifikasi body request put kedalam masing-masing variabel
+	name := c.PostForm("name")
+	email := c.PostForm("email")
+	phone := c.PostForm("phone")
+	address := c.PostForm("address")
+
+	// Definisikan model client kedalam sebuah variabel
+	var pel models.Client
+
+	// Buat kondisi bila data id pelanggan tidak ditemukan
+	if settings.DB.First(&pel, "id = ?", id).RecordNotFound() {
+		helpers.ElorResponse(c, "Data id pelanggan tidak ditemukan!")
+		c.Abort()
+		return
+	}
+
+	// Kondisi email tidak boleh sama dengan akun lainnya
+	if !settings.DB.First(&pel, "email LIKE ? AND id != ?", "%"+email+"%", id).RecordNotFound() {
+		helpers.ElorResponse(c, "Email sudah terdaftar di data pelanggan lainnya!")
+		c.Abort()
+		return
+	}
+
+	// Update data pelanggan jika id pelanggan ditemukan
+	settings.DB.Model(&pel).Where("id = ?", id).Updates(models.Client{
+		Name:    name,
+		Email:   email,
+		Phone:   phone,
+		Address: address,
+	})
+
+	// Masukan nilai inputan kedalam struct response dan deklarasikan pada variabel untuk ditampilkan
+	response := FillClientList(pel)
+
+	// Masukan input data yang telah dilakukan akan ditampilkan dalam struct response
+	helpers.SuksesWithDataResponse(c, "Sukses update data pelanggan!", response)
+}
+
+func HapusPelanggan(c *gin.Context) {
+	// Deklarasikan nilai param id kedalam variabel id
+	id := c.Param("id")
+
+	// Sisipkan fungsi model pelanggan sebagai variabel pelanggan
+	var pelanggan models.Client
+
+	// Kondisi bila data id tidak ditemukan
+	if settings.DB.First(&pelanggan, "id = ?", id).RecordNotFound() {
+		helpers.ElorResponse(c, "Data id staff tidak ditemukan!")
+		c.Abort()
+		return
+	}
+
+	// Hapus data pelanggan dari id yang terdapat pada database
+	settings.DB.Where("id = ?", id).Delete(&pelanggan)
+
+	// Panggil response sukses helper bila data berhasil dihapus
+	helpers.SuksesResponse(c, "Berhasil melakukan hapus data pelanggan!")
 }

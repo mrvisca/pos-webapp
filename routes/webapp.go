@@ -101,6 +101,8 @@ func WebAppRoute() {
 		{
 			clientPage.POST("/list", middleware.IsAuth(), controllers.ListClient)
 			clientPage.POST("/tambah-data", middleware.IsAuth(), controllers.TambahPelanggan)
+			clientPage.PUT("/update/:id", middleware.IsAuth(), controllers.UpdatePelanggan)
+			clientPage.DELETE("/hapus/:id", middleware.IsAuth(), controllers.HapusPelanggan)
 		}
 
 		// Route Logout

@@ -143,7 +143,7 @@ func UpdatePegawai(c *gin.Context) {
 		sandi, _ := helpers.HashPassword(password)
 
 		// Kondisi email tidak boleh sama dengan email akun lainnya
-		if !settings.DB.First(&peg, "email LIKE ? AND id != ?", email, id).RecordNotFound() {
+		if !settings.DB.First(&peg, "email LIKE ? AND id != ?", "%"+email+"%", id).RecordNotFound() {
 			helpers.ElorResponse(c, "Gagal mengubah data pegawai, email sudah terdaftar dalam sistem kami!")
 			c.Abort()
 			return

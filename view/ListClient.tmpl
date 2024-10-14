@@ -604,6 +604,107 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
             </div>
             <!-- END: Notification Content -->
+            <!-- BEGIN: Modal Update Content -->
+            <div id="header-update-footer-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- BEGIN: Modal Header -->
+                        <div class="modal-header">
+                            <h2 class="font-medium text-base mr-auto">
+                                Form Ubah Data Pelanggan
+                            </h2>
+                            <a data-tw-dismiss="modal" href="javascript:;"> <i data-lucide="x" class="w-8 h-8 text-gray-500"></i> </a>
+                        </div>
+                        <!-- END: Modal Header -->
+                        <!-- BEGIN: Modal Body -->
+                        <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="modal-form-1" class="form-label">Nama</label>
+                                <input type="hidden" class="form-control update-form-id">
+                                <input type="text" class="form-control update-form-nama" placeholder="Jhon Doe" required>
+                            </div>
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="fileInput" class="form-label">Email</label>
+                                <input type="email" class="form-control update-form-email" placeholder="jhon@mail.com" required>
+                            </div>
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="fileInput" class="form-label">Nomor Telpon</label>
+                                <input type="number" class="form-control update-form-phone" placeholder="62821********" required>
+                            </div>
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="fileInput" class="form-label">Alamat</label>
+                                <textarea class="form-control update-form-alamat" placeholder="Alamat pelanggan"></textarea>
+                            </div>
+                        </div>
+                        <!-- END: Modal Body -->
+                        <!-- BEGIN: Modal Footer -->
+                        <div class="modal-footer text-right">
+                            <button type="button" data-dismiss="modal" class="btn btn-outline-secondary w-20 mr-1">Batal</button>
+                            <button type="button" class="btn btn-primary w-20 btn-update">Simpan</button>
+                        </div>
+                        <!-- END: Modal Footer -->
+                    </div>
+                </div>
+            </div>
+            <!-- END: Modal Content -->
+            <!-- BEGIN: Success Notification Content -->
+            <div id="success-update-notification-content" class="toastify-content hidden flex">
+                <i class="text-success" data-lucide="check-circle"></i> 
+                <div class="ml-4 mr-4">
+                    <div class="font-medium">Update data pelanggan berhasil!</div>
+                    <div class="text-slate-500 mt-1 updateres-sukses"></div>
+                </div>
+            </div>
+            <!-- END: Success Notification Content -->
+            <!-- BEGIN: Failed Notification Content -->
+            <div id="fail-update-notification-content" class="toastify-content hidden flex">
+                <i class="text-success" data-lucide="x-circle"></i> 
+                <div class="ml-4 mr-4">
+                    <div class="font-medium">Gagal update data pelanggan!</div>
+                    <div class="text-slate-500 mt-1 updateres-gagal"></div>
+                </div>
+            </div>
+            <!-- END: Notification Content -->
+             <!-- BEGIN: Modal Delete Content -->
+            <div id="delete-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body p-0">
+                            <div class="p-5 text-center">
+                                <i data-lucide="x-circle" class="w-16 h-16 text-danger mx-auto mt-3"></i> 
+                                <div class="text-3xl mt-5">Hapus Data Pelanggan</div>
+                                <div class="text-slate-500 mt-2">
+                                    Apa kamu yakin akan menghapus data Pelanggan ini? 
+                                    <br>
+                                    data pelanggan yang terhapus tidak bisa dikembalikan.
+                                </div>
+                            </div>
+                            <div class="px-5 pb-8 text-center">
+                                <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Batakkan</button>
+                                <button type="button" class="btn btn-danger w-24 hapus-btn">Hapus</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- BEGIN: Notification Content -->
+            <div id="success-hapus-notification-content" class="toastify-content hidden flex">
+                <i class="text-success" data-lucide="check-circle"></i> 
+                <div class="ml-4 mr-4">
+                    <div class="font-medium">Hapus data pelanggan berhasil!</div>
+                    <div class="text-slate-500 mt-1 hapus-sukses"></div>
+                </div>
+            </div>
+            <!-- END: Notification Content -->
+            <!-- BEGIN: Notification Content -->
+            <div id="failed-hapus-notification-content" class="toastify-content hidden flex">
+                <i class="text-success" data-lucide="x-circle"></i> 
+                <div class="ml-4 mr-4">
+                    <div class="font-medium">Hapus data pelanggan gagal!</div>
+                    <div class="text-slate-500 mt-1 hapus-gagal"></div>
+                </div>
+            </div>
+            <!-- END: Notification Content -->
         </div>
         
         <!-- BEGIN: JS Assets-->
@@ -857,7 +958,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     }
 
                                     // Create action buttons
-                                    var editBtn = '<button class="btn btn-primary btn-edit" data-id="' + data.id + '"><i data-feather="eye" class="w-4 h-4 mr-1"></i></button>';
+                                    var editBtn = '<button class="btn btn-primary btn-edit" data-id="' + data.id + '" data-name="' + data.name + '" data-email="' + data.email + '" data-phone="' + data.phone + '" data-address="' + data.address + '"><i data-feather="edit" class="w-4 h-4 mr-1"></i></button>';
                                     var deleteBtn = '<button class="btn btn-danger btn-delete" data-id="' + data.id + '"><i data-feather="trash-2" class="w-4 h-4 mr-1"></i></button>';
 
                                     // Combine the buttons
@@ -871,6 +972,145 @@ License: You must have a valid license purchased only from themeforest(the above
                         }
                     });
 
+                    // Handle button click events
+                    jQuery('#data-table').on('click', '.btn-edit', function() {
+                        // Show the modal
+                        const el = document.querySelector("#header-update-footer-modal-preview");
+                        const modal = tailwind.Modal.getOrCreateInstance(el);
+                        modal.show();
+
+                        var id = jQuery(this).attr("data-id");
+                        var name = jQuery(this).attr("data-name");
+                        var email = jQuery(this).attr("data-email");
+                        var phone = jQuery(this).attr("data-phone");
+                        var address = jQuery(this).attr("data-address");
+
+                        // Handle edit action
+                        jQuery('.update-form-id').val(id);
+                        jQuery('.update-form-nama').val(name);
+                        jQuery('.update-form-email').val(email);
+                        jQuery('.update-form-alamat').val(address);
+                        jQuery('.update-form-phone').val(phone);
+                    });
+
+                    // Tombol Update Admin
+                    jQuery(".btn-update").click(function() {
+                        // Ajax update
+                        var updateid = jQuery('.update-form-id').val();
+                        var name = jQuery('.update-form-nama').val();
+                        var email = jQuery('.update-form-email').val();
+                        var phone = jQuery('.update-form-phone').val();
+                        var address = jQuery('.update-form-alamat').val();
+
+                        // Kirim permintaan pembaruan produk ke API
+                        jQuery.ajax({
+                            url: 'http://127.0.0.1:8080/api/v1/pelanggan/update/' + updateid,
+                            type: "PUT",
+                            beforeSend: function(xhr) {
+                                xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+                            },
+                            contentType: 'application/x-www-form-urlencoded',
+                            data: {
+                                name: name,
+                                email: email,
+                                phone: phone,
+                                address: address
+                            },
+                            success: function(response) {
+                                // Show the modal
+                                jQuery('.updateres-sukses').text(response.message);
+                                Toastify({
+                                    node: $("#success-update-notification-content")
+                                        .clone()
+                                        .removeClass("hidden")[0],
+                                    duration: 3000,
+                                    newWindow: true,
+                                    close: true,
+                                    gravity: "top",
+                                    position: "right",
+                                    stopOnFocus: true,
+                                }).showToast();
+
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 3000); // 3000 milliseconds = 3 seconds
+                            },
+                            error: function(xhr, status, error) {
+                                // Show the modal
+                                jQuery('.updateres-gagal').text(response.message);
+                                Toastify({
+                                    node: $("#fail-update-notification-content")
+                                        .clone()
+                                        .removeClass("hidden")[0],
+                                    duration: 5000,
+                                    newWindow: true,
+                                    close: true,
+                                    gravity: "top",
+                                    position: "right",
+                                    stopOnFocus: true,
+                                }).showToast();
+
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 5000); // 3000 milliseconds = 3 seconds
+                            }
+                        });
+                    });
+
+                    // Button Hapus data
+                    jQuery('#data-table').on('click', '.btn-delete', function() {
+                        var idhapus = jQuery(this).attr("data-id");
+
+                        // Show Modal
+                        const el = document.querySelector("#delete-modal-preview");
+                        const modal = tailwind.Modal.getOrCreateInstance(el);
+                        modal.show();
+
+                        // Fungsi button hapus pada modal peringatan
+                        jQuery('.hapus-btn').click(function() {
+                            // Ajax delete api
+                            jQuery.ajax({
+                                url: 'http://localhost:8080/api/v1/pelanggan/hapus/' + idhapus,
+                                type: 'DELETE',
+                                headers: {
+                                    'Authorization': 'Bearer ' + token
+                                },
+                                success: function(response) {
+                                    jQuery('.pesan-sukses').text(response.message);
+                                    Toastify({
+                                        node: $("#success-notification-content")
+                                            .clone()
+                                            .removeClass("hidden")[0],
+                                        duration: 2000,
+                                        newWindow: true,
+                                        close: true,
+                                        gravity: "top",
+                                        position: "right",
+                                        stopOnFocus: true,
+                                    }).showToast();
+
+                                    setTimeout(function() {
+                                        location.reload();
+                                    }, 3000); // 3000 milliseconds = 3 seconds
+                                },
+                                error: function(xhr, status, error) {
+                                    jQuery('.pesan-gagal').text(error);
+                                    Toastify({
+                                        node: $("failed-notification-content")
+                                            .clone()
+                                            .removeClass("hidden")[0],
+                                        duration: 5000,
+                                        newWindow: true,
+                                        close: true,
+                                        gravity: "top",
+                                        position: "right",
+                                        stopOnFocus: true,
+                                    }).showToast();
+                                }
+                            });
+                        })
+                    });
+
                     jQuery('.btn-logout').click(function() {
                         var url = 'http://localhost:8080/api/v1/logout';
                         fetch(url, {
@@ -881,9 +1121,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         }).then(response => response.json()).then(data => {
 
                             // Show the modal
-                            jQuery('.pesan-sukses').text(response.message);
+                            jQuery('.hapus-sukses').text(response.message);
                             Toastify({
-                                node: $("#success-login-notification-content")
+                                node: $("#success-hapus-notification-content")
                                     .clone()
                                     .removeClass("hidden")[0],
                                 duration: 3000,
@@ -900,9 +1140,9 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         }).catch(error => {
                             // Show the modal
-                            jQuery('.pesan-gagal').text(error);
+                            jQuery('.hapus-gagal').text(error);
                             Toastify({
-                                node: $("#fail-login-notification-content")
+                                node: $("#failed-hapus-notification-content")
                                     .clone()
                                     .removeClass("hidden")[0],
                                 duration: 5000,
@@ -912,10 +1152,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                 position: "right",
                                 stopOnFocus: true,
                             }).showToast();
-
-                            // setTimeout(function() {
-                            //     location.reload();
-                            // }, 3000); // 3000 milliseconds = 3 seconds
                         });
                     })
                 }else{
