@@ -1378,16 +1378,17 @@ License: You must have a valid license purchased only from themeforest(the above
                     }).then(response => response.json()).then(hasil => {
                         jQuery('.login-user').text(hasil.data.Name)
                         jQuery('.login-role').text(hasil.data.RoleName)
-                        jQuery('.select-cabang').val(hasil.data.RoleId)
+                        jQuery('.select-cabang').val(hasil.data.WarehouseId)
                     }).catch(error => {
                         console.log(error);
                     });
 
                     jQuery('.select-cabang').change(function() {
+                        var id =  jQuery(this).val()
                         // Kirim permintaan pembaruan produk ke API
                         jQuery.ajax({
-                            url: 'http://localhost:8080/api/v1/autentikasi/login',
-                            type: 'POST',
+                            url: 'http://localhost:8080/api/v1/dashboard/ubah-cabang/',
+                            type: 'PUT',
                             data: formData,
                             processData: false,
                             contentType: false,
@@ -1450,55 +1451,57 @@ License: You must have a valid license purchased only from themeforest(the above
                             }
                         })
                     })
+
+                    jQuery('.btn-logout').click(function() {
+                        var url = 'http://localhost:8080/api/v1/logout';
+                        fetch(url, {
+                            method: 'GET',
+                            headers: {
+                                'Authorization': 'Bearer ' + token
+                            }
+                        }).then(response => response.json()).then(data => {
+
+                            // Show the modal
+                            jQuery('.pesan-sukses').text(response.message);
+                            Toastify({
+                                node: $("#success-login-notification-content")
+                                    .clone()
+                                    .removeClass("hidden")[0],
+                                duration: 3000,
+                                newWindow: true,
+                                close: true,
+                                gravity: "top",
+                                position: "right",
+                                stopOnFocus: true,
+                            }).showToast();
+
+                            setTimeout(function() {
+                                window.location.href = "http://localhost:8080/"; // Replace with your desired destination URL
+                            }, 3000); // 3000 milliseconds = 3 seconds
+
+                        }).catch(error => {
+                            // Show the modal
+                            jQuery('.pesan-gagal').text(error);
+                            Toastify({
+                                node: $("#fail-login-notification-content")
+                                    .clone()
+                                    .removeClass("hidden")[0],
+                                duration: 5000,
+                                newWindow: true,
+                                close: true,
+                                gravity: "top",
+                                position: "right",
+                                stopOnFocus: true,
+                            }).showToast();
+
+                            // setTimeout(function() {
+                            //     location.reload();
+                            // }, 3000); // 3000 milliseconds = 3 seconds
+                        });
+                    })
+                }else{
+                    window.location.href = "http://localhost:8080/"; // Replace with your desired destination URL
                 }
-
-                jQuery('.btn-logout').click(function() {
-                    var url = 'http://localhost:8080/api/v1/logout';
-                    fetch(url, {
-                        method: 'GET',
-                        headers: {
-                            'Authorization': 'Bearer ' + token
-                        }
-                    }).then(response => response.json()).then(data => {
-
-                        // Show the modal
-                        jQuery('.pesan-sukses').text(response.message);
-                        Toastify({
-                            node: $("#success-login-notification-content")
-                                .clone()
-                                .removeClass("hidden")[0],
-                            duration: 3000,
-                            newWindow: true,
-                            close: true,
-                            gravity: "top",
-                            position: "right",
-                            stopOnFocus: true,
-                        }).showToast();
-
-                        setTimeout(function() {
-                            window.location.href = "http://localhost:8080/"; // Replace with your desired destination URL
-                        }, 3000); // 3000 milliseconds = 3 seconds
-
-                    }).catch(error => {
-                        // Show the modal
-                        jQuery('.pesan-gagal').text(error);
-                        Toastify({
-                            node: $("#fail-login-notification-content")
-                                .clone()
-                                .removeClass("hidden")[0],
-                            duration: 5000,
-                            newWindow: true,
-                            close: true,
-                            gravity: "top",
-                            position: "right",
-                            stopOnFocus: true,
-                        }).showToast();
-
-                        // setTimeout(function() {
-                        //     location.reload();
-                        // }, 3000); // 3000 milliseconds = 3 seconds
-                    });
-                })
             })
         </script>
         <!-- END: JS Assets-->

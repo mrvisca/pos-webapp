@@ -49,19 +49,19 @@ License: You must have a valid license purchased only from themeforest(the above
                 <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="x-circle" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
                 <ul class="scrollable__content py-2">
                     <li>
-                        <a href="http://localhost:8080/aplikasi/dashboard" class="menu menu--active">
+                        <a href="http://localhost:8080/aplikasi/dashboard" class="menu">
                             <div class="menu__icon"> <i data-lucide="airplay"></i> </div>
                             <div class="menu__title"> Dashboard </div>
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:;" class="menu">
+                        <a href="javascript:;" class="menu menu--active">
                             <div class="menu__icon"> <i data-lucide="user"></i> </div>
                             <div class="menu__title"> Staff <i data-lucide="chevron-down" class="menu__sub-icon "></i> </div>
                         </a>
                         <ul class="">
                             <li>
-                                <a href="http://localhost:8080/aplikasi/staff/list" class="menu">
+                                <a href="http://localhost:8080/aplikasi/staff/list" class="menu menu--active">
                                     <div class="menu__icon"> <i data-lucide="list"></i> </div>
                                     <div class="menu__title"> List </div>
                                 </a>
@@ -216,7 +216,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="side-nav__devider my-6"></div>
                 <ul>
                     <li>
-                        <a href="http://localhost:8080/aplikasi/dashboard" class="side-menu side-menu--active">
+                        <a href="http://localhost:8080/aplikasi/dashboard" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="airplay"></i> </div>
                             <div class="side-menu__title">
                                 Dashboard
@@ -224,7 +224,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:;" class="side-menu">
+                        <a href="javascript:;" class="side-menu side-menu--active">
                             <div class="side-menu__icon"> <i data-lucide="user"></i> </div>
                             <div class="side-menu__title">
                                 Staff 
@@ -233,7 +233,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </a>
                         <ul class="">
                             <li>
-                                <a href="http://localhost:8080/aplikasi/staff/list" class="side-menu">
+                                <a href="http://localhost:8080/aplikasi/staff/list" class="side-menu side-menu--active">
                                     <div class="side-menu__icon"> <i data-lucide="list"></i> </div>
                                     <div class="side-menu__title"> List </div>
                                 </a>
@@ -641,6 +641,123 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
             </div>
             <!-- END: Success Notification Content -->
+            <!-- BEGIN: Modal Update Content -->
+            <div id="header-update-footer-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- BEGIN: Modal Header -->
+                        <div class="modal-header">
+                            <h2 class="font-medium text-base mr-auto">
+                                Form Ubah Data Pegawai
+                            </h2>
+                            <a data-tw-dismiss="modal" href="javascript:;"> <i data-lucide="x" class="w-8 h-8 text-gray-500"></i> </a>
+                        </div>
+                        <!-- END: Modal Header -->
+                        <!-- BEGIN: Modal Body -->
+                        <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="modal-form-1" class="form-label">Nama</label>
+                                <input type="hidden" class="form-control update-form-id">
+                                <input type="text" class="form-control update-form-nama" placeholder="Jhon Doe" required>
+                            </div>
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="fileInput" class="form-label">Email</label>
+                                <input type="email" class="form-control update-form-email" placeholder="jhon@mail.com" required>
+                            </div>
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="modal-form-2" class="form-label">Password</label>
+                                <input type="password" class="form-control update-form-password" placeholder="******">
+                            </div>
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="modal-form-2" class="form-label">Konfirmasi Password</label>
+                                <input type="password" class="form-control update-form-confirm" placeholder="******">
+                            </div>
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="modal-form-2" class="form-label">Role</label>
+                                <select class="form-select update-form-role_id" required>
+                                    <option disabled selected> --- Pilih Role Pegawai --- </option>
+                                </select>
+                            </div>
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="fileInput" class="form-label">Nomor Telpon</label>
+                                <input type="number" class="form-control update-form-phone" placeholder="62821********" required>
+                            </div>
+                            <div class="col-span-12 sm:col-span-12 mt-2">
+                                <label for="modal-form-5" class="form-label">Verifikasi Akun</label>
+                                <div class="form-check form-switch">
+                                    <input id="checkbox-switch-7" class="form-check-input update-form-verifikasi" type="checkbox">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END: Modal Body -->
+                        <!-- BEGIN: Modal Footer -->
+                        <div class="modal-footer text-right">
+                            <button type="button" data-dismiss="modal" class="btn btn-outline-secondary w-20 mr-1">Batal</button>
+                            <button type="button" class="btn btn-primary w-20 btn-update">Simpan</button>
+                        </div>
+                        <!-- END: Modal Footer -->
+                    </div>
+                </div>
+            </div>
+            <!-- END: Modal Content -->
+            <!-- BEGIN: Success Notification Content -->
+            <div id="success-update-notification-content" class="toastify-content hidden flex">
+                <i class="text-success" data-lucide="check-circle"></i> 
+                <div class="ml-4 mr-4">
+                    <div class="font-medium">Update data pegawai berhasil!</div>
+                    <div class="text-slate-500 mt-1 updateres-sukses"></div>
+                </div>
+            </div>
+            <!-- END: Success Notification Content -->
+            <!-- BEGIN: Failed Notification Content -->
+            <div id="fail-update-notification-content" class="toastify-content hidden flex">
+                <i class="text-success" data-lucide="x-circle"></i> 
+                <div class="ml-4 mr-4">
+                    <div class="font-medium">Gagal update data pegawai!</div>
+                    <div class="text-slate-500 mt-1 updateres-gagal"></div>
+                </div>
+            </div>
+            <!-- END: Notification Content -->
+             <!-- BEGIN: Modal Delete Content -->
+             <div id="delete-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body p-0">
+                            <div class="p-5 text-center">
+                                <i data-lucide="x-circle" class="w-16 h-16 text-danger mx-auto mt-3"></i> 
+                                <div class="text-3xl mt-5">Yakin akan menghapus data pegawai ini?</div>
+                                <div class="text-slate-500 mt-2">
+                                    Apa kamu yakin akan menghapus data Pegawai ini? 
+                                    <br>
+                                    data pegawai yang terhapus tidak bisa dikembalikan.
+                                </div>
+                            </div>
+                            <div class="px-5 pb-8 text-center">
+                                <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Batakkan</button>
+                                <button type="button" class="btn btn-danger w-24 hapus-btn">Hapus</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- BEGIN: Notification Content -->
+            <div id="success-hapus-notification-content" class="toastify-content hidden flex">
+                <i class="text-success" data-lucide="check-circle"></i> 
+                <div class="ml-4 mr-4">
+                    <div class="font-medium">Hapus data pegawai berhasil!</div>
+                    <div class="text-slate-500 mt-1 hapus-sukses"></div>
+                </div>
+            </div>
+            <!-- END: Notification Content -->
+            <!-- BEGIN: Notification Content -->
+            <div id="failed-hapus-notification-content" class="toastify-content hidden flex">
+                <i class="text-success" data-lucide="x-circle"></i> 
+                <div class="ml-4 mr-4">
+                    <div class="font-medium">Hapus data pegawai gagal!</div>
+                    <div class="text-slate-500 mt-1 hapus-gagal"></div>
+                </div>
+            </div>
+            <!-- END: Notification Content -->
         </div>
         
         <!-- BEGIN: JS Assets-->
@@ -719,19 +836,20 @@ License: You must have a valid license purchased only from themeforest(the above
                     }).then(response => response.json()).then(hasil => {
                         jQuery('.login-user').text(hasil.data.Name)
                         jQuery('.login-role').text(hasil.data.RoleName)
-                        jQuery('.select-cabang').val(hasil.data.RoleId)
+                        jQuery('.select-cabang').val(hasil.data.WarehouseId)
 
                         jQuery('.form-business_id').val(hasil.data.BusinessId)
-                        jQuery('.form-warehoue_id').val(hasil.dataWarehouseId)
+                        jQuery('.form-warehouse_id').val(hasil.data.WarehouseId)
                     }).catch(error => {
                         console.log(error);
                     });
 
                     jQuery('.select-cabang').change(function() {
+                        var id =  jQuery(this).val()
                         // Kirim permintaan pembaruan produk ke API
                         jQuery.ajax({
-                            url: 'http://localhost:8080/api/v1/autentikasi/login',
-                            type: 'POST',
+                            url: 'http://localhost:8080/api/v1/dashboard/ubah-cabang/' + id,
+                            type: 'PUT',
                             data: formData,
                             processData: false,
                             contentType: false,
@@ -835,11 +953,13 @@ License: You must have a valid license purchased only from themeforest(the above
                         }
                     }).then(response => response.json()).then(data => {
                         var selectRole = jQuery('.form-role_id');
+                        var updateRole = jQuery('.update-form-role_id');
 
                         // Iterasi melalui data dan membuat objek untuk setiap entri
                         jQuery.each(data, function(index, item) {
                             for (let i = 0; i < item.length; i++) {
                                 selectRole.append('<option value="' + item[i].id + '">' + item[i].name + '</option>');
+                                updateRole.append('<option value="' + item[i].id + '">' + item[i].name + '</option>');
                             }
                         });
                     }).catch(error => {
@@ -848,7 +968,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                     jQuery('.btn-simpan').click(function() {
                         // Show the modal
-                    event.preventDefault(); // Prevent default form submission
+                        event.preventDefault(); // Prevent default form submission
 
                         // Get form data
                         var name = jQuery(".form-nama").val();
@@ -861,7 +981,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         // Send data using Ajax
                         jQuery.ajax({
-                            url: 'http://127.0.0.1:8000/api/master-employee/tambah/',
+                            url: 'http://localhost:8080/api/v1/staff/tambah-data',
                             type: "POST",
                             beforeSend: function(xhr) {
                                 xhr.setRequestHeader('Authorization', 'Bearer ' + token);
@@ -895,7 +1015,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                 }, 3000); // 3000 milliseconds = 3 seconds
                             },
                             error: function(xhr, status, error) {
-                                jQuery('.pesan-gagal').text(error);
+                                var hpes = JSON.parse(xhr.responseText);
+                                jQuery('.pesan-gagal').text(hpes.message);
                                 Toastify({
                                     node: $("#fail-notification-content")
                                         .clone()
@@ -907,10 +1028,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                     position: "right",
                                     stopOnFocus: true,
                                 }).showToast();
-
-                                setTimeout(function() {
-                                    location.reload();
-                                }, 5000); // 3000 milliseconds = 3 seconds
                             }
                         }); 
                     })
@@ -942,7 +1059,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             for (let i = 0; i < item.length; i++) {
                                 // // Create an object with the desired properties
                                 var rowData = {
-                                    id: item[i].ID,
+                                    id: item[i].id,
                                     role_id: item[i].role_id,
                                     role_name: item[i].role_name,
                                     business_id: item[i].business_id,
@@ -967,8 +1084,6 @@ License: You must have a valid license purchased only from themeforest(the above
                             dataTable.destroy();
                         }
 
-                        console.log(rowDataArray);
-
                         // Initialize DataTable
                         var table = jQuery('#data-table').DataTable({
                             data: rowDataArray,
@@ -989,7 +1104,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     render: function (data, type, row) {
 
                                         // Create action buttons
-                                        var editBtn = '<button class="btn btn-primary btn-edit" data-id="' + data.id + '" data-name="' + data.name + '" data-email="' + data.email + '" data-role_id="' + data.role_id + '" data-refferal="' + data.refferal + '"><i data-feather="edit" class="w-4 h-4"></i></button>';
+                                        var editBtn = '<button class="btn btn-primary btn-edit" data-id="' + data.id + '" data-name="' + data.name + '" data-email="' + data.email + '" data-role_id="' + data.role_id + '" data-phone="' + data.phone + '" data-is_verified="' + data.is_verified + '"><i data-feather="edit" class="w-4 h-4"></i></button>';
                                         var deleteBtn = '<button class="btn btn-danger btn-delete" data-id="' + data.id + '"><i data-feather="trash-2" class="w-4 h-4"></i></button>';
 
                                         // Combine the buttons
@@ -1014,57 +1129,53 @@ License: You must have a valid license purchased only from themeforest(the above
                             var name = jQuery(this).attr("data-name");
                             var email = jQuery(this).attr("data-email");
                             var role_id = jQuery(this).attr("data-role_id");
-                            var refferal = jQuery(this).attr("data-refferal");
+                            var phone = jQuery(this).attr("data-phone");
+                            var is_verified = jQuery(this).attr("data-is_verified");
 
                             // Handle edit action
-                            jQuery('.update-id').val(id);
-                            jQuery('.update-nama').val(name);
-                            jQuery('.update-email').val(email);
-                            jQuery('.update-refferal').val(refferal);
-                        });
-
-                        jQuery(".generate-update").click(function() {
-                            // Generate random string
-                            var length = 8;
-                            var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-                            var randomString = "";
-                            for (var i = 0; i < length; i++) {
-                                randomString += characters.charAt(Math.floor(Math.random() * characters.length));
+                            jQuery('.update-form-id').val(id);
+                            jQuery('.update-form-nama').val(name);
+                            jQuery('.update-form-email').val(email);
+                            jQuery('.update-form-role_id').val(role_id);
+                            jQuery('.update-form-phone').val(phone);
+                            if(is_verified == "false")
+                            {
+                                jQuery(".update-form-verifikasi").prop("checked", false);
+                            }else{
+                                jQuery(".update-form-verifikasi").prop("checked", true);
                             }
-
-                            // Display random string
-                            jQuery(".update-refferal").val(randomString);
                         });
 
                         // Tombol Update Admin
                         jQuery(".btn-update").click(function() {
                             // Ajax update
-                            var id = jQuery('.update-id').val();
-                            var name = jQuery('.update-nama').val();
-                            var email = jQuery('.update-email').val();
-                            var password = jQuery('.update-password').val();
-                            var role_id = jQuery('.update-role_id').val();
-                            var kode = jQuery('.update-kode-rahasia').val();
-                            var refferal = jQuery('.update-refferal').val();
+                            var updateid = jQuery('.update-form-id').val();
+                            var role_id = jQuery('.update-form-role_id').val();
+                            var name = jQuery('.update-form-nama').val();
+                            var email = jQuery('.update-form-email').val();
+                            var password = jQuery('.update-form-password').val();
+                            var phone = jQuery('.update-form-phone').val();
+                            var verifikasi = jQuery('.update-form-verifikasi').prop('checked');
 
                             // Kirim permintaan pembaruan produk ke API
                             jQuery.ajax({
-                                url: 'http://127.0.0.1:8000/api/master-admin/update/' + id,
+                                url: 'http://127.0.0.1:8080/api/v1/staff/update/' + updateid,
                                 type: "PUT",
                                 beforeSend: function(xhr) {
                                     xhr.setRequestHeader('Authorization', 'Bearer ' + token);
                                 },
+                                contentType: 'application/x-www-form-urlencoded',
                                 data: {
+                                    role_id: role_id,
                                     name: name,
                                     email: email,
                                     password: password,
-                                    role_id: role_id,
-                                    kode: kode,
-                                    refferal: refferal,
+                                    phone: phone,
+                                    verifikasi: verifikasi
                                 },
                                 success: function(response) {
                                     // Show the modal
-                                    jQuery('.update-sukses').text(response.message);
+                                    jQuery('.updateres-sukses').text(response.message);
                                     Toastify({
                                         node: $("#success-update-notification-content")
                                             .clone()
@@ -1083,7 +1194,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 },
                                 error: function(xhr, status, error) {
                                     // Show the modal
-                                    jQuery('.update-gagal').text(response.message);
+                                    jQuery('.updateres-gagal').text(response.message);
                                     Toastify({
                                         node: $("#fail-update-notification-content")
                                             .clone()
@@ -1112,11 +1223,10 @@ License: You must have a valid license purchased only from themeforest(the above
                             const modal = tailwind.Modal.getOrCreateInstance(el);
                             modal.show();
 
-                            jQuery('.hapus-btn').show();
                             jQuery('.hapus-btn').click(function() {
                                 // Ajax delete Api
                                 jQuery.ajax({
-                                    url: 'http://127.0.0.1:8000/api/master-admin/hapus/' + id,
+                                    url: 'http://127.0.0.1:8080/api/v1/staff/hapus/' + id,
                                     type: 'DELETE',
                                     headers: {
                                         'Authorization': 'Bearer ' + token
@@ -1142,7 +1252,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                     },
                                     error: function(xhr, status, error) {
                                         // Show the modal
-                                        jQuery('.hapus-gagal').text(error);
+                                        var hpes = JSON.parse(xhr.responseText);
+                                        jQuery('.hapus-gagal').text(hpes.message);
                                         Toastify({
                                             node: $("#fail-hapus-notification-content")
                                                 .clone()
@@ -1154,10 +1265,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                             position: "right",
                                             stopOnFocus: true,
                                         }).showToast();
-
-                                        setTimeout(function() {
-                                            location.reload();
-                                        }, 5000); // 3000 milliseconds = 3 seconds
                                     }
                                 });
                             });
@@ -1211,6 +1318,8 @@ License: You must have a valid license purchased only from themeforest(the above
                             // }, 3000); // 3000 milliseconds = 3 seconds
                         });
                     })
+                }else{
+                    window.location.href = "http://localhost:8080/"; // Replace with your desired destination URL
                 }
             })
         </script>

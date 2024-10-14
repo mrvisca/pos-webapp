@@ -15,7 +15,16 @@ func WebAppRoute() {
 	router := gin.Default()
 
 	// Menambahkan cors pada settingan route gin golang
-	router.Use(cors.Default())
+	// router.Use(cors.Default())
+
+	// Menggunakan middleware CORS
+	router.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:8080", "http://example.com"}, // Ganti dengan origin yang diizinkan
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+	}))
 
 	// Memuat template dengan ekstensi .tmpl dari direktori view
 	router.LoadHTMLGlob("view/*.tmpl")
@@ -81,6 +90,8 @@ func WebAppRoute() {
 			staffpage.GET("/list", middleware.IsAuth(), controllers.ListPegawai)
 			staffpage.POST("/tambah-data", middleware.IsAuth(), controllers.TambahPegawai)
 			staffpage.GET("/support/role", middleware.IsAuth(), controllers.SupportDataRole)
+			staffpage.PUT("/update/:id", middleware.IsAuth(), controllers.UpdatePegawai)
+			staffpage.DELETE("/hapus/:id", middleware.IsAuth(), controllers.HapusStaff)
 		}
 
 		// Route Logout
