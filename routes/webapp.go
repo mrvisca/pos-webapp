@@ -48,6 +48,9 @@ func WebAppRoute() {
 	router.GET("/aplikasi/client/list", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "ListClient.tmpl", nil) // Render template ListClient.tmpl
 	})
+	router.GET("/aplikasi/pengaturan/pajak-layanan", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "PajakLayanan.tmpl", nil) // Render template PajakLayanan.tmpl
+	})
 
 	v1 := router.Group("api/v1/")
 	{
@@ -103,6 +106,12 @@ func WebAppRoute() {
 			clientPage.POST("/tambah-data", middleware.IsAuth(), controllers.TambahPelanggan)
 			clientPage.PUT("/update/:id", middleware.IsAuth(), controllers.UpdatePelanggan)
 			clientPage.DELETE("/hapus/:id", middleware.IsAuth(), controllers.HapusPelanggan)
+		}
+
+		pajakLayanan := v1.Group("/pajak-layanan/")
+		{
+			pajakLayanan.GET("/master-data", middleware.IsAuth(), controllers.GetDataPala)
+			pajakLayanan.PUT("/update/:id", middleware.IsAuth(), controllers.UpdatePala)
 		}
 
 		// Route Logout

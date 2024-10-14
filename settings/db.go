@@ -22,8 +22,10 @@ func InitDB() {
 	DB.AutoMigrate(&models.Warehouse{}).AddForeignKey("business_id", "businesses(id)", "NO ACTION", "NO ACTION").AddForeignKey("subscription_id", "subscriptions(id)", "NO ACTION", "NO ACTION")
 	DB.AutoMigrate(&models.User{}).AddForeignKey("business_id", "businesses(id)", "NO ACTION", "NO ACTION").AddForeignKey("warehouse_id", "warehouses(id)", "NO ACTION", "NO ACTION").AddForeignKey("role_id", "roles(id)", "NO ACTION", "NO ACTION")
 	DB.AutoMigrate(&models.Client{}).AddForeignKey("business_id", "businesses(id)", "NO ACTION", "NO ACTION").AddForeignKey("warehouse_id", "warehouses(id)", "NO ACTION", "NO ACTION")
+	DB.AutoMigrate(&models.PajakLayanan{}).AddForeignKey("business_id", "businesses(id)", "NO ACTION", "NO ACTION").AddForeignKey("warehouse_id", "warehouses(id)", "NO ACTION", "NO ACTION")
 
 	DB.Model(&models.Warehouse{}).Related(&models.Business{}).Related(&models.Subscription{})
 	DB.Model(&models.User{}).Related(&models.Business{}).Related(&models.Warehouse{}).Related(&models.Role{})
 	DB.Model(&models.Client{}).Related(&models.Business{}).Related(&models.Warehouse{})
+	DB.Model(&models.PajakLayanan{}).Related(&models.Business{}).Related(&models.Warehouse{})
 }

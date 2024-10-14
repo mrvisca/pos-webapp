@@ -13,6 +13,7 @@ type RegisData struct {
 	User   models.User
 	Bisnis models.Business
 	Gudang models.Warehouse
+	Pala   models.PajakLayanan
 }
 
 func RegisterAcc(c *gin.Context) {
@@ -91,11 +92,22 @@ func RegisterAcc(c *gin.Context) {
 	}
 	settings.DB.Create(&user)
 
+	pala := models.PajakLayanan{
+		BusinessId:  simbis.ID,
+		WarehouseId: gudang.ID,
+		IsTax:       false,
+		Taxval:      0,
+		IsService:   false,
+		Serviceval:  0,
+	}
+	settings.DB.Create(&pala)
+
 	// Masukan hasil inputan simbis, gudang dan user dalam 1 variabel untuk ditampilkan pada response pendaftaran
 	response := RegisData{
 		User:   user,
 		Bisnis: simbis,
 		Gudang: gudang,
+		Pala:   pala,
 	}
 
 	// Deklarasi variabel untuk kebutuhan email verifikasi akun baru pengguna

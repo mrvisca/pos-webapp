@@ -46,6 +46,7 @@ func ProfilePengguna(c *gin.Context) {
 	// Panggil data role untuk mengambil nama role
 	settings.DB.First(&romod, "id = ?", roleid)
 
+	// Sesuaikan response data dalam variabel profile untuk ditampilkan kedalam helper response
 	profile := ProfileRes{
 		UserId:      userid,
 		RoleId:      roleid,
@@ -56,6 +57,7 @@ func ProfilePengguna(c *gin.Context) {
 		Email:       email,
 	}
 
+	// Kirim data ke helper response untuk mengembalikan response data
 	helpers.SuksesWithDataResponse(c, "Berhasil memanggil data profile", profile)
 }
 

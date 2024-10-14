@@ -17,22 +17,9 @@ License: You must have a valid license purchased only from themeforest(the above
         <meta name="description" content="Midone admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
         <meta name="keywords" content="admin template, Midone Admin Template, dashboard template, flat admin template, responsive admin template, web app">
         <meta name="author" content="LEFT4CODE">
-        <title>List Staff - Visca POS Webapp</title>
+        <title>Pajak & Layanan - Visca POS Webapp</title>
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="/assets/dist/css/app.css" />
-        <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
-        <style>
-            /* Menyesuaikan lebar dropdown "Show entries" */
-            .dataTables_length {
-                width: 200px; /* Sesuaikan lebar sesuai kebutuhan Anda */
-            }
-
-            /* Menyesuaikan lebar opsi dropdown */
-            .dataTables_length select {
-                width: 30%; /* Menggunakan lebar penuh */
-                box-sizing: border-box; /* Menambahkan padding dan border ke dalam lebar */
-            }
-        </style>
         <!-- END: CSS Assets-->
     </head>
     <!-- END: Head -->
@@ -55,13 +42,13 @@ License: You must have a valid license purchased only from themeforest(the above
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:;" class="menu menu--active">
+                        <a href="javascript:;" class="menu">
                             <div class="menu__icon"> <i data-lucide="user"></i> </div>
                             <div class="menu__title"> Staff <i data-lucide="chevron-down" class="menu__sub-icon "></i> </div>
                         </a>
                         <ul class="">
                             <li>
-                                <a href="http://localhost:8080/aplikasi/staff/list" class="menu menu--active">
+                                <a href="http://localhost:8080/aplikasi/staff/list" class="menu">
                                     <div class="menu__icon"> <i data-lucide="list"></i> </div>
                                     <div class="menu__title"> List </div>
                                 </a>
@@ -171,13 +158,13 @@ License: You must have a valid license purchased only from themeforest(the above
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:;" class="menu">
+                        <a href="javascript:;" class="menu menu--active">
                             <div class="menu__icon"> <i data-lucide="settings"></i> </div>
                             <div class="menu__title"> Pengaturan <i data-lucide="chevron-down" class="menu__sub-icon "></i> </div>
                         </a>
                         <ul class="">
                             <li>
-                                <a href="http://localhost:8080/aplikasi/pengaturan/pajak-layanan" class="menu">
+                                <a href="http://localhost:8080/aplikasi/pengaturan/pajak-layanan" class="menu menu--active">
                                     <div class="menu__icon"> <i data-lucide="percent"></i> </div>
                                     <div class="menu__title"> Pajak & layanan </div>
                                 </a>
@@ -224,7 +211,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:;" class="side-menu side-menu--active">
+                        <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="user"></i> </div>
                             <div class="side-menu__title">
                                 Staff 
@@ -233,7 +220,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </a>
                         <ul class="">
                             <li>
-                                <a href="http://localhost:8080/aplikasi/staff/list" class="side-menu side-menu--active">
+                                <a href="http://localhost:8080/aplikasi/staff/list" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="list"></i> </div>
                                     <div class="side-menu__title"> List </div>
                                 </a>
@@ -354,7 +341,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:;" class="side-menu">
+                        <a href="javascript:;" class="side-menu side-menu--active">
                             <div class="side-menu__icon"> <i data-lucide="settings"></i> </div>
                             <div class="side-menu__title">
                                 Pengaturan 
@@ -363,7 +350,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </a>
                         <ul class="">
                             <li>
-                                <a href="http://localhost:8080/aplikasi/pengaturan/pajak-layanan" class="side-menu">
+                                <a href="http://localhost:8080/aplikasi/pengaturan/pajak-layanan" class="side-menu side-menu--active">
                                     <div class="side-menu__icon"> <i data-lucide="percent"></i> </div>
                                     <div class="side-menu__title"> Pajak & Layanan </div>
                                 </a>
@@ -399,7 +386,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Aplikasi</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">List Pegawai</li>
+                            <li class="breadcrumb-item active" aria-current="page">Master Pajak & Layanan</li>
                         </ol>
                     </nav>
                     <!-- END: Breadcrumb -->
@@ -513,251 +500,66 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- END: Account Menu -->
                 </div>
                 <!-- END: Top Bar -->
-                <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+                <div class="intro-y flex items-center mt-8">
                     <h2 class="text-lg font-medium mr-auto">
-                        List Pegawai
+                        Master Pajak & Layanan
                     </h2>
-                    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-                        <button class="btn btn-primary shadow-md mr-2 btn-tambah">Tambah data</button>
-                        <!-- <div class="dropdown ml-auto sm:ml-0">
-                            <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
-                                <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
-                            </button>
-                            <div class="dropdown-menu w-40">
-                                <ul class="dropdown-content">
-                                    <li>
-                                        <a href="" class="dropdown-item"> <i data-lucide="file-plus" class="w-4 h-4 mr-2"></i> New Category </a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="dropdown-item"> <i data-lucide="users" class="w-4 h-4 mr-2"></i> New Group </a>
-                                    </li>
-                                </ul>
+                </div>
+                <div class="grid grid-cols-12 gap-6 mt-5">
+                    <div class="intro-y col-span-12 lg:col-span-12">
+                        <!-- BEGIN: Vertical Form -->
+                        <div class="intro-y box">
+                            <div class="flex flex-col sm:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
+                                <h2 class="font-medium text-base mr-auto">
+                                    Form Pajak & Layanan
+                                </h2>
                             </div>
-                        </div> -->
-                    </div>
-                </div>
-                <!-- BEGIN: HTML Table Data -->
-                <div class="intro-y box p-5 mt-5">
-                    <div class="preview">
-                        <div class="overflow-x-auto">
-                            <table id="data-table" class="table table-striped-5" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>Nama</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
-                                        <th>Phone</th>
-                                        <th>Verifikasi</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                            <div id="vertical-form" class="p-5">
+                                <div class="preview">
+                                    <div class="grid grid-cols-12 gap-x-5">
+                                        <div class="col-span-12 sm:col-span-6 mt-2">
+                                            <div>
+                                                <label for="modal-form-5" class="form-label">Pajak</label>
+                                                <div class="form-check form-switch">
+                                                    <input type="hidden" class="form-control form-id">
+                                                    <input id="checkbox-switch-7" class="form-check-input form-is-tax" type="checkbox">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <br/>
+                                                <label for="modal-form-5" class="form-label">Nilai Pajak</label>
+                                                <div class="input-group mt-2">
+                                                    <input type="number" class="form-control form-taxval" placeholder="11" aria-label="Price" aria-describedby="input-group-price">
+                                                    <div id="input-group-price" class="input-group-text"><b>%</b></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-span-12 sm:col-span-6 mt-2">
+                                            <div>
+                                                <label for="modal-form-5" class="form-label">Layanan</label>
+                                                <div class="form-check form-switch">
+                                                    <input id="checkbox-switch-7" class="form-check-input form-is-service" type="checkbox">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <br/>
+                                                <label for="modal-form-5" class="form-label">Nilai Layanan</label>
+                                                <div class="input-group mt-2">
+                                                    <input type="number" class="form-control form-serviceval" placeholder="10" aria-label="Price" aria-describedby="input-group-price">
+                                                    <div id="input-group-price" class="input-group-text"><b>%</b></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary mt-5 btn-simpan">Simpan</button>
+                                </div>
+                            </div>
                         </div>
+                        <!-- END: Vertical Form -->
                     </div>
                 </div>
-                <!-- END: HTML Table Data -->
             </div>
             <!-- END: Content -->
-            <!-- BEGIN: Modal Content -->
-            <div id="header-footer-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <!-- BEGIN: Modal Header -->
-                        <div class="modal-header">
-                            <h2 class="font-medium text-base mr-auto">
-                                Form Tambah Data Pegawai
-                            </h2>
-                            <a data-tw-dismiss="modal" href="javascript:;"> <i data-lucide="x" class="w-8 h-8 text-gray-500"></i> </a>
-                        </div>
-                        <!-- END: Modal Header -->
-                        <!-- BEGIN: Modal Body -->
-                        <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
-                            <div class="col-span-12 sm:col-span-12">
-                                <label for="modal-form-1" class="form-label">Nama</label>
-                                <input type="text" class="form-control form-nama" placeholder="Jhon Doe" required>
-                                <input type="hidden" class="form-control form-business_id">
-                                <input type="hidden" class="form-control form-warehouse_id">
-                            </div>
-                            <div class="col-span-12 sm:col-span-12">
-                                <label for="fileInput" class="form-label">Email</label>
-                                <input type="email" class="form-control form-email" placeholder="jhon@mail.com" required>
-                            </div>
-                            <div class="col-span-12 sm:col-span-12">
-                                <label for="modal-form-2" class="form-label">Password</label>
-                                <input type="password" class="form-control form-password" placeholder="******" required>
-                            </div>
-                            <div class="col-span-12 sm:col-span-12">
-                                <label for="modal-form-2" class="form-label">Konfirmasi Password</label>
-                                <input type="password" class="form-control form-confirm" placeholder="******" required>
-                            </div>
-                            <div class="col-span-12 sm:col-span-12">
-                                <label for="modal-form-2" class="form-label">Role</label>
-                                <select class="form-select form-role_id" required>
-                                    <option disabled selected> --- Pilih Role Pegawai --- </option>
-                                </select>
-                            </div>
-                            <div class="col-span-12 sm:col-span-12">
-                                <label for="fileInput" class="form-label">Nomor Telpon</label>
-                                <input type="number" class="form-control form-phone" placeholder="62821********" required>
-                            </div>
-                        </div>
-                        <!-- END: Modal Body -->
-                        <!-- BEGIN: Modal Footer -->
-                        <div class="modal-footer text-right">
-                            <button type="button" data-dismiss="modal" class="btn btn-outline-secondary w-20 mr-1">Batal</button>
-                            <button type="button" class="btn btn-primary w-20 btn-simpan">Simpan</button>
-                        </div>
-                        <!-- END: Modal Footer -->
-                    </div>
-                </div>
-            </div>
-            <!-- END: Modal Content -->
-            <!-- BEGIN: Success Notification Content -->
-            <div id="success-notification-content" class="toastify-content hidden flex">
-                <i class="text-success" data-lucide="check-circle"></i> 
-                <div class="ml-4 mr-4">
-                    <div class="font-medium">Simpan data pegawai berhasil!</div>
-                    <div class="text-slate-500 mt-1 pesan-sukses"></div>
-                </div>
-            </div>
-            <!-- END: Success Notification Content -->
-            <!-- BEGIN: Failed Notification Content -->
-            <div id="fail-notification-content" class="toastify-content hidden flex">
-                <i class="text-success" data-lucide="x-circle"></i> 
-                <div class="ml-4 mr-4">
-                    <div class="font-medium">Gagal simpan data pegawai!</div>
-                    <div class="text-slate-500 mt-1 pesan-gagal"></div>
-                </div>
-            </div>
-            <!-- END: Notification Content -->
-             <!-- BEGIN: Success Verified Notification Content -->
-             <div id="success-confirm-notification-content" class="toastify-content hidden flex">
-                <i class="text-success" data-lucide="x-circle"></i> 
-                <div class="ml-4 mr-4">
-                    <div class="font-medium">Password tidak valid!</div>
-                    <div class="text-slate-500 mt-1 confirm-gagal">Pastikan password dan konfirmasi password sama dan sesuai</div>
-                </div>
-            </div>
-            <!-- END: Success Notification Content -->
-            <!-- BEGIN: Modal Update Content -->
-            <div id="header-update-footer-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <!-- BEGIN: Modal Header -->
-                        <div class="modal-header">
-                            <h2 class="font-medium text-base mr-auto">
-                                Form Ubah Data Pegawai
-                            </h2>
-                            <a data-tw-dismiss="modal" href="javascript:;"> <i data-lucide="x" class="w-8 h-8 text-gray-500"></i> </a>
-                        </div>
-                        <!-- END: Modal Header -->
-                        <!-- BEGIN: Modal Body -->
-                        <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
-                            <div class="col-span-12 sm:col-span-12">
-                                <label for="modal-form-1" class="form-label">Nama</label>
-                                <input type="hidden" class="form-control update-form-id">
-                                <input type="text" class="form-control update-form-nama" placeholder="Jhon Doe" required>
-                            </div>
-                            <div class="col-span-12 sm:col-span-12">
-                                <label for="fileInput" class="form-label">Email</label>
-                                <input type="email" class="form-control update-form-email" placeholder="jhon@mail.com" required>
-                            </div>
-                            <div class="col-span-12 sm:col-span-12">
-                                <label for="modal-form-2" class="form-label">Password</label>
-                                <input type="password" class="form-control update-form-password" placeholder="******">
-                            </div>
-                            <div class="col-span-12 sm:col-span-12">
-                                <label for="modal-form-2" class="form-label">Konfirmasi Password</label>
-                                <input type="password" class="form-control update-form-confirm" placeholder="******">
-                            </div>
-                            <div class="col-span-12 sm:col-span-12">
-                                <label for="modal-form-2" class="form-label">Role</label>
-                                <select class="form-select update-form-role_id" required>
-                                    <option disabled selected> --- Pilih Role Pegawai --- </option>
-                                </select>
-                            </div>
-                            <div class="col-span-12 sm:col-span-12">
-                                <label for="fileInput" class="form-label">Nomor Telpon</label>
-                                <input type="number" class="form-control update-form-phone" placeholder="62821********" required>
-                            </div>
-                            <div class="col-span-12 sm:col-span-12 mt-2">
-                                <label for="modal-form-5" class="form-label">Verifikasi Akun</label>
-                                <div class="form-check form-switch">
-                                    <input id="checkbox-switch-7" class="form-check-input update-form-verifikasi" type="checkbox">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END: Modal Body -->
-                        <!-- BEGIN: Modal Footer -->
-                        <div class="modal-footer text-right">
-                            <button type="button" data-dismiss="modal" class="btn btn-outline-secondary w-20 mr-1">Batal</button>
-                            <button type="button" class="btn btn-primary w-20 btn-update">Simpan</button>
-                        </div>
-                        <!-- END: Modal Footer -->
-                    </div>
-                </div>
-            </div>
-            <!-- END: Modal Content -->
-            <!-- BEGIN: Success Notification Content -->
-            <div id="success-update-notification-content" class="toastify-content hidden flex">
-                <i class="text-success" data-lucide="check-circle"></i> 
-                <div class="ml-4 mr-4">
-                    <div class="font-medium">Update data pegawai berhasil!</div>
-                    <div class="text-slate-500 mt-1 updateres-sukses"></div>
-                </div>
-            </div>
-            <!-- END: Success Notification Content -->
-            <!-- BEGIN: Failed Notification Content -->
-            <div id="fail-update-notification-content" class="toastify-content hidden flex">
-                <i class="text-success" data-lucide="x-circle"></i> 
-                <div class="ml-4 mr-4">
-                    <div class="font-medium">Gagal update data pegawai!</div>
-                    <div class="text-slate-500 mt-1 updateres-gagal"></div>
-                </div>
-            </div>
-            <!-- END: Notification Content -->
-            <!-- BEGIN: Modal Delete Content -->
-            <div id="delete-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-body p-0">
-                            <div class="p-5 text-center">
-                                <i data-lucide="x-circle" class="w-16 h-16 text-danger mx-auto mt-3"></i> 
-                                <div class="text-3xl mt-5">Hapus Data Pegawai</div>
-                                <div class="text-slate-500 mt-2">
-                                    Apa kamu yakin akan menghapus data Pegawai ini? 
-                                    <br>
-                                    data pegawai yang terhapus tidak bisa dikembalikan.
-                                </div>
-                            </div>
-                            <div class="px-5 pb-8 text-center">
-                                <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Batakkan</button>
-                                <button type="button" class="btn btn-danger w-24 hapus-btn">Hapus</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- BEGIN: Notification Content -->
-            <div id="success-hapus-notification-content" class="toastify-content hidden flex">
-                <i class="text-success" data-lucide="check-circle"></i> 
-                <div class="ml-4 mr-4">
-                    <div class="font-medium">Hapus data pegawai berhasil!</div>
-                    <div class="text-slate-500 mt-1 hapus-sukses"></div>
-                </div>
-            </div>
-            <!-- END: Notification Content -->
-            <!-- BEGIN: Notification Content -->
-            <div id="failed-hapus-notification-content" class="toastify-content hidden flex">
-                <i class="text-success" data-lucide="x-circle"></i> 
-                <div class="ml-4 mr-4">
-                    <div class="font-medium">Hapus data pegawai gagal!</div>
-                    <div class="text-slate-500 mt-1 hapus-gagal"></div>
-                </div>
-            </div>
-            <!-- END: Notification Content -->
             <!-- BEGIN: Success Change Warehouse Notification Content -->
             <div id="success-wh-notification-content" class="toastify-content hidden flex">
                 <i class="text-success" data-lucide="check-circle"></i> 
@@ -776,12 +578,28 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
             </div>
             <!-- END: Notification Content -->
+            <!-- BEGIN: Success Notification Content -->
+            <div id="success-update-notification-content" class="toastify-content hidden flex">
+                <i class="text-success" data-lucide="check-circle"></i> 
+                <div class="ml-4 mr-4">
+                    <div class="font-medium">Update data master pajak layanan berhasil!</div>
+                    <div class="text-slate-500 mt-1 updateres-sukses"></div>
+                </div>
+            </div>
+            <!-- END: Success Notification Content -->
+            <!-- BEGIN: Failed Notification Content -->
+            <div id="fail-update-notification-content" class="toastify-content hidden flex">
+                <i class="text-success" data-lucide="x-circle"></i> 
+                <div class="ml-4 mr-4">
+                    <div class="font-medium">Gagal update data master pajak layanan!</div>
+                    <div class="text-slate-500 mt-1 updateres-gagal"></div>
+                </div>
+            </div>
+            <!-- END: Notification Content -->
         </div>
         
         <!-- BEGIN: JS Assets-->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.29.1/dist/feather.min.js"></script>
         <script src="/assets/dist/js/app.js"></script>
         <script src="/assets/src/toastify.js"></script>
         <script>
@@ -821,10 +639,8 @@ License: You must have a valid license purchased only from themeforest(the above
 
                 // Cek Token
                 if (token) {
-                    // Sembunyikan element
-                    jQuery('.btn-simpan').hide()
 
-                    // Panggil data list cabang
+                    // Panggil data cabang
                     var url = 'http://localhost:8080/api/v1/dashboard/support/cabang';
                     fetch(url, {
                         method: 'GET',
@@ -855,9 +671,6 @@ License: You must have a valid license purchased only from themeforest(the above
                         jQuery('.login-user').text(hasil.data.Name)
                         jQuery('.login-role').text(hasil.data.RoleName)
                         jQuery('.select-cabang').val(hasil.data.WarehouseId)
-
-                        jQuery('.form-business_id').val(hasil.data.BusinessId)
-                        jQuery('.form-warehouse_id').val(hasil.data.WarehouseId)
                     }).catch(error => {
                         console.log(error);
                     });
@@ -866,7 +679,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         var id =  jQuery(this).val()
                         // Kirim permintaan pembaruan produk ke API
                         jQuery.ajax({
-                            url: 'http://localhost:8080/api/v1/dashboard/ubah-cabang/' + id,
+                            url: 'http://localhost:8080/api/v1/dashboard/ubah-cabang/',
                             type: 'PUT',
                             data: formData,
                             processData: false,
@@ -931,93 +744,68 @@ License: You must have a valid license purchased only from themeforest(the above
                         })
                     })
 
-                    // Fungsi button tambah ketika di klik akan memunculkan modal
-                    jQuery('.btn-tambah').click(function() {
-                        // Show the modal
-                        const el = document.querySelector("#header-footer-modal-preview");
-                        const modal = tailwind.Modal.getOrCreateInstance(el);
-                        modal.show(); 
-                    })
-
-                    jQuery('.form-confirm').change(function() {
-                        var konfirmasi = jQuery(this).val()
-                        var sandi = jQuery('.form-password').val()
-
-                        if (sandi == konfirmasi)
-                        {
-                            jQuery('.btn-simpan').show()
-                        }else{
-                            // Show the modal
-                            Toastify({
-                                node: $("#success-confirm-notification-content")
-                                    .clone()
-                                    .removeClass("hidden")[0],
-                                duration: 5000,
-                                newWindow: true,
-                                close: true,
-                                gravity: "top",
-                                position: "right",
-                                stopOnFocus: true,
-                            }).showToast();
-                        }
-                    })
-
-                    // Panggil data list role
-                    var url = 'http://localhost:8080/api/v1/staff/support/role';
+                    // Panggil data master pajak layanan
+                    var url = 'http://localhost:8080/api/v1/pajak-layanan/master-data';
                     fetch(url, {
                         method: 'GET',
                         headers: {
                             'Authorization': 'Bearer ' + token
                         }
-                    }).then(response => response.json()).then(data => {
-                        var selectRole = jQuery('.form-role_id');
-                        var updateRole = jQuery('.update-form-role_id');
+                    }).then(response => response.json()).then(hasil => {
+                        var idpala = hasil.data.ID
+                        var is_tax = hasil.data.IsTax
+                        var is_service = hasil.data.IsService
+                        var taxval = hasil.data.Taxval
+                        var serviceval = hasil.data.Serviceval
 
-                        // Iterasi melalui data dan membuat objek untuk setiap entri
-                        jQuery.each(data, function(index, item) {
-                            for (let i = 0; i < item.length; i++) {
-                                selectRole.append('<option value="' + item[i].id + '">' + item[i].name + '</option>');
-                                updateRole.append('<option value="' + item[i].id + '">' + item[i].name + '</option>');
-                            }
-                        });
+                        if(is_tax == false)
+                        {
+                            jQuery(".form-is-tax").prop("checked", false);
+                        }else{
+                            jQuery(".form-is-tax").prop("checked", true);
+                        }
+
+                        if(is_service == false)
+                        {
+                            jQuery(".form-is-service").prop("checked", false);
+                        }else{
+                            jQuery(".form-is-service").prop("checked", true);
+                        }
+
+                        jQuery('.form-id').val(idpala)
+                        jQuery('.form-taxval').val(taxval)
+                        jQuery('.form-serviceval').val(serviceval)
                     }).catch(error => {
                         console.error('Error:', error);
                     });
 
-                    jQuery('.btn-simpan').click(function() {
-                        // Show the modal
-                        event.preventDefault(); // Prevent default form submission
+                    jQuery(".btn-simpan").click(function() {
+                        // Ajax update
+                        var updateid = jQuery('.form-id').val();
+                        var is_tax = jQuery('.form-is-tax').prop('checked');
+                        var taxval = jQuery('.form-taxval').val();
+                        var is_service = jQuery('.form-is-service').prop('checked');
+                        var serviceval = jQuery('.form-serviceval').val();
 
-                        // Get form data
-                        var name = jQuery(".form-nama").val();
-                        var email = jQuery(".form-email").val();
-                        var password = jQuery(".form-password").val();
-                        var role_id = jQuery(".form-role_id").val();
-                        var phone = jQuery(".form-phone").val();
-                        var business_id = jQuery(".form-business_id").val();
-                        var warehouse_id = jQuery(".form-warehouse_id").val();
-
-                        // Send data using Ajax
+                        // Kirim permintaan pembaruan produk ke API
                         jQuery.ajax({
-                            url: 'http://localhost:8080/api/v1/staff/tambah-data',
-                            type: "POST",
+                            url: 'http://127.0.0.1:8080/api/v1/pajak-layanan/update/' + updateid,
+                            type: "PUT",
                             beforeSend: function(xhr) {
                                 xhr.setRequestHeader('Authorization', 'Bearer ' + token);
                             },
+                            contentType: 'application/x-www-form-urlencoded',
                             data: {
-                                role_id: role_id,
-                                business_id: business_id,
-                                warehouse_id: warehouse_id,
-                                name: name,
-                                email: email,
-                                password: password,
-                                phone: phone,
+                                is_tax: is_tax,
+                                taxval: taxval,
+                                is_service: is_service,
+                                serviceval: serviceval,
                             },
                             success: function(response) {
                                 // Show the modal
-                                jQuery('.pesan-sukses').text(response.message);
+                                jQuery('.updateres-sukses').text(response.message);
                                 Toastify({
-                                    node: $("#success-notification-content")
+                                    node: $("#success-update-notification-content")
                                         .clone()
                                         .removeClass("hidden")[0],
                                     duration: 3000,
@@ -1033,261 +821,26 @@ License: You must have a valid license purchased only from themeforest(the above
                                 }, 3000); // 3000 milliseconds = 3 seconds
                             },
                             error: function(xhr, status, error) {
-                                var hpes = JSON.parse(xhr.responseText);
-                                jQuery('.pesan-gagal').text(hpes.message);
+                                // Show the modal
+                                jQuery('.updateres-gagal').text(response.message);
                                 Toastify({
-                                    node: $("#fail-notification-content")
+                                    node: $("#fail-update-notification-content")
                                         .clone()
                                         .removeClass("hidden")[0],
-                                    duration: 4000,
+                                    duration: 5000,
                                     newWindow: true,
                                     close: true,
                                     gravity: "top",
                                     position: "right",
                                     stopOnFocus: true,
                                 }).showToast();
+
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 5000); // 3000 milliseconds = 3 seconds
                             }
-                        }); 
+                        });
                     })
-
-                    // Ambil Data Admin
-                    var url = 'http://localhost:8080/api/v1/staff/list';
-                    fetch(url, {
-                        method: 'GET',
-                        headers: {
-                            'Authorization': 'Bearer ' + token
-                        }
-                    }).then(response => response.json()).then(data => {
-                        // Panggil fungsi untuk mengisi data ke dalam tbody DataTable
-                        populateDataTable(data);
-                    }).catch(error => {
-                        console.error('Error:', error);
-                    });
-
-                    function populateDataTable(data) {
-                        var tableBody = jQuery("#data-body");
-
-                        // Bersihkan isi tbody sebelum mengisi dengan data baru
-                        tableBody.empty();
-
-                        var rowDataArray = []; // Variabel untuk menyimpan objek baris
-
-                        // Perulangan menggunakan jQuery.each()
-                        jQuery.each(data, function(index, item) {
-                            for (let i = 0; i < item.length; i++) {
-                                // // Create an object with the desired properties
-                                var rowData = {
-                                    id: item[i].id,
-                                    role_id: item[i].role_id,
-                                    role_name: item[i].role_name,
-                                    business_id: item[i].business_id,
-                                    business_name: item[i].business_name,
-                                    warehouse_id: item[i].warehouse_id,
-                                    warehouse_name: item[i].warehouse_name,
-                                    name: item[i].name,
-                                    email: item[i].email,
-                                    phone: item[i].phone,
-                                    is_verified: item[i].is_verified,
-                                    kode: item[i].kode,
-                                };
-
-                                // Push the object to the data array
-                                rowDataArray.push(rowData);
-                            }
-                        });
-
-                        var dataTable = jQuery('#data-table').DataTable();
-                        if (dataTable) {
-                            // Destroy DataTable
-                            dataTable.destroy();
-                        }
-
-                        // Initialize DataTable
-                        var table = jQuery('#data-table').DataTable({
-                            data: rowDataArray,
-                            columns: [
-                                { data: 'name'},
-                                { data: 'email'},
-                                { data: 'role_name'},
-                                { data: 'phone'},
-                                {
-                                    data: 'is_verified',
-                                    render: function(data, type, row) {
-                                        // Jika is_verified bernilai true, tampilkan "Verified", jika false tampilkan "Not Verified"
-                                        return data ? 'Verified' : 'Not Verified';
-                                    }
-                                },
-                                {
-                                    data: null,
-                                    render: function (data, type, row) {
-
-                                        // Create action buttons
-                                        var editBtn = '<button class="btn btn-primary btn-edit" data-id="' + data.id + '" data-name="' + data.name + '" data-email="' + data.email + '" data-role_id="' + data.role_id + '" data-phone="' + data.phone + '" data-is_verified="' + data.is_verified + '"><i data-feather="edit" class="w-4 h-4"></i></button>';
-                                        var deleteBtn = '<button class="btn btn-danger btn-delete" data-id="' + data.id + '"><i data-feather="trash-2" class="w-4 h-4"></i></button>';
-
-                                        // Combine the buttons
-                                        var actions = editBtn + '  ||  ' + deleteBtn;
-                                        return actions;
-                                    }
-                                }
-                            ],
-                            "drawCallback": function( settings ) {
-                                feather.replace();
-                            }
-                        });
-
-                        // Passing data list row ke dalam modal update
-                        jQuery('#data-table').on('click', '.btn-edit', function() {
-                            // Show the modal
-                            const el = document.querySelector("#header-update-footer-modal-preview");
-                            const modal = tailwind.Modal.getOrCreateInstance(el);
-                            modal.show();
-
-                            var id = jQuery(this).attr("data-id");
-                            var name = jQuery(this).attr("data-name");
-                            var email = jQuery(this).attr("data-email");
-                            var role_id = jQuery(this).attr("data-role_id");
-                            var phone = jQuery(this).attr("data-phone");
-                            var is_verified = jQuery(this).attr("data-is_verified");
-
-                            // Handle edit action
-                            jQuery('.update-form-id').val(id);
-                            jQuery('.update-form-nama').val(name);
-                            jQuery('.update-form-email').val(email);
-                            jQuery('.update-form-role_id').val(role_id);
-                            jQuery('.update-form-phone').val(phone);
-                            if(is_verified == "false")
-                            {
-                                jQuery(".update-form-verifikasi").prop("checked", false);
-                            }else{
-                                jQuery(".update-form-verifikasi").prop("checked", true);
-                            }
-                        });
-
-                        // Tombol Update Admin
-                        jQuery(".btn-update").click(function() {
-                            // Ajax update
-                            var updateid = jQuery('.update-form-id').val();
-                            var role_id = jQuery('.update-form-role_id').val();
-                            var name = jQuery('.update-form-nama').val();
-                            var email = jQuery('.update-form-email').val();
-                            var password = jQuery('.update-form-password').val();
-                            var phone = jQuery('.update-form-phone').val();
-                            var verifikasi = jQuery('.update-form-verifikasi').prop('checked');
-
-                            // Kirim permintaan pembaruan produk ke API
-                            jQuery.ajax({
-                                url: 'http://127.0.0.1:8080/api/v1/staff/update/' + updateid,
-                                type: "PUT",
-                                beforeSend: function(xhr) {
-                                    xhr.setRequestHeader('Authorization', 'Bearer ' + token);
-                                },
-                                contentType: 'application/x-www-form-urlencoded',
-                                data: {
-                                    role_id: role_id,
-                                    name: name,
-                                    email: email,
-                                    password: password,
-                                    phone: phone,
-                                    verifikasi: verifikasi
-                                },
-                                success: function(response) {
-                                    // Show the modal
-                                    jQuery('.updateres-sukses').text(response.message);
-                                    Toastify({
-                                        node: $("#success-update-notification-content")
-                                            .clone()
-                                            .removeClass("hidden")[0],
-                                        duration: 3000,
-                                        newWindow: true,
-                                        close: true,
-                                        gravity: "top",
-                                        position: "right",
-                                        stopOnFocus: true,
-                                    }).showToast();
-
-                                    setTimeout(function() {
-                                        location.reload();
-                                    }, 3000); // 3000 milliseconds = 3 seconds
-                                },
-                                error: function(xhr, status, error) {
-                                    // Show the modal
-                                    jQuery('.updateres-gagal').text(response.message);
-                                    Toastify({
-                                        node: $("#fail-update-notification-content")
-                                            .clone()
-                                            .removeClass("hidden")[0],
-                                        duration: 5000,
-                                        newWindow: true,
-                                        close: true,
-                                        gravity: "top",
-                                        position: "right",
-                                        stopOnFocus: true,
-                                    }).showToast();
-
-                                    setTimeout(function() {
-                                        location.reload();
-                                    }, 5000); // 3000 milliseconds = 3 seconds
-                                }
-                            });
-                        });
-
-                        // Fungsi Tombol hapus
-                        jQuery('#data-table').on('click', '.btn-delete', function() {
-                            var id = jQuery(this).attr("data-id");
-
-                            // Show the modal
-                            const el = document.querySelector("#delete-modal-preview");
-                            const modal = tailwind.Modal.getOrCreateInstance(el);
-                            modal.show();
-
-                            jQuery('.hapus-btn').click(function() {
-                                // Ajax delete Api
-                                jQuery.ajax({
-                                    url: 'http://127.0.0.1:8080/api/v1/staff/hapus/' + id,
-                                    type: 'DELETE',
-                                    headers: {
-                                        'Authorization': 'Bearer ' + token
-                                    },
-                                    success: function(response) {
-                                        // Show the modal
-                                        jQuery('.hapus-sukses').text(response.message);
-                                        Toastify({
-                                            node: $("#success-hapus-notification-content")
-                                                .clone()
-                                                .removeClass("hidden")[0],
-                                            duration: 3000,
-                                            newWindow: true,
-                                            close: true,
-                                            gravity: "top",
-                                            position: "right",
-                                            stopOnFocus: true,
-                                        }).showToast();
-
-                                        setTimeout(function() {
-                                            location.reload();
-                                        }, 3000); // 3000 milliseconds = 3 seconds
-                                    },
-                                    error: function(xhr, status, error) {
-                                        // Show the modal
-                                        var hpes = JSON.parse(xhr.responseText);
-                                        jQuery('.hapus-gagal').text(hpes.message);
-                                        Toastify({
-                                            node: $("#fail-hapus-notification-content")
-                                                .clone()
-                                                .removeClass("hidden")[0],
-                                            duration: 5000,
-                                            newWindow: true,
-                                            close: true,
-                                            gravity: "top",
-                                            position: "right",
-                                            stopOnFocus: true,
-                                        }).showToast();
-                                    }
-                                });
-                            });
-                        });
-                    }
 
                     jQuery('.btn-logout').click(function() {
                         var url = 'http://localhost:8080/api/v1/logout';
