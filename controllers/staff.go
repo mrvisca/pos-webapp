@@ -40,7 +40,7 @@ func ListPegawai(c *gin.Context) {
 	datas := []models.User{}
 
 	// Panggil data model user sesuai dengan variabel mode user
-	settings.DB.Where("business_id = ? AND warehouse_id = ? AND role_id != ?", businessid, warehouseid, 2).Preload("Role").Find(&datas)
+	settings.DB.Where("business_id = ? AND warehouse_id = ? AND role_id != ? AND role_id != ?", businessid, warehouseid, 2, 1).Preload("Role").Find(&datas)
 
 	// Deklarasikan model struct response untuk dimasukan data
 	list := []models.Staff{}

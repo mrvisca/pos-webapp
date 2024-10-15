@@ -93,7 +93,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="menu">
+                                <a href="http://localhost:8080/aplikasi/produk/kategori-produk" class="menu">
                                     <div class="menu__icon"> <i data-lucide="tag"></i> </div>
                                     <div class="menu__title"> Kategori </div>
                                 </a>
@@ -270,7 +270,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="side-menu">
+                                <a href="http://localhost:8080/aplikasi/produk/kategori-produk" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="tag"></i> </div>
                                     <div class="side-menu__title"> Kategori </div>
                                 </a>
@@ -519,21 +519,6 @@ License: You must have a valid license purchased only from themeforest(the above
                     </h2>
                     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
                         <button class="btn btn-primary shadow-md mr-2 btn-tambah">Tambah data</button>
-                        <!-- <div class="dropdown ml-auto sm:ml-0">
-                            <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
-                                <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
-                            </button>
-                            <div class="dropdown-menu w-40">
-                                <ul class="dropdown-content">
-                                    <li>
-                                        <a href="" class="dropdown-item"> <i data-lucide="file-plus" class="w-4 h-4 mr-2"></i> New Category </a>
-                                    </li>
-                                    <li>
-                                        <a href="" class="dropdown-item"> <i data-lucide="users" class="w-4 h-4 mr-2"></i> New Group </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
                 <!-- BEGIN: HTML Table Data -->
@@ -860,6 +845,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         jQuery('.form-warehouse_id').val(hasil.data.WarehouseId)
                     }).catch(error => {
                         console.log(error);
+                        window.location.href = "http://localhost:8080/";
                     });
 
                     jQuery('.select-cabang').change(function() {

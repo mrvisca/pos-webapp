@@ -93,7 +93,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="menu">
+                                <a href="http://localhost:8080/aplikasi/produk/kategori-produk" class="menu">
                                     <div class="menu__icon"> <i data-lucide="tag"></i> </div>
                                     <div class="menu__title"> Kategori </div>
                                 </a>
@@ -270,7 +270,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="side-menu">
+                                <a href="http://localhost:8080/aplikasi/produk/kategori-produk" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="tag"></i> </div>
                                     <div class="side-menu__title"> Kategori </div>
                                 </a>
@@ -665,7 +665,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
             </div>
             <!-- END: Notification Content -->
-             <!-- BEGIN: Modal Delete Content -->
+            <!-- BEGIN: Modal Delete Content -->
             <div id="delete-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -805,6 +805,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         jQuery('.form-warehouse_id').val(hasil.data.WarehouseId)
                     }).catch(error => {
                         console.log(error);
+                        window.location.href = "http://localhost:8080/";
                     });
 
                     jQuery('.select-cabang').change(function() {

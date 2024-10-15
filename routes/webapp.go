@@ -51,6 +51,9 @@ func WebAppRoute() {
 	router.GET("/aplikasi/pengaturan/pajak-layanan", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "PajakLayanan.tmpl", nil) // Render template PajakLayanan.tmpl
 	})
+	router.GET("/aplikasi/produk/kategori-produk", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "KategoriProduk.tmpl", nil) // Render template KategoriProduk.tmpl
+	})
 
 	v1 := router.Group("api/v1/")
 	{
@@ -112,6 +115,14 @@ func WebAppRoute() {
 		{
 			pajakLayanan.GET("/master-data", middleware.IsAuth(), controllers.GetDataPala)
 			pajakLayanan.PUT("/update/:id", middleware.IsAuth(), controllers.UpdatePala)
+		}
+
+		kategoriproduk := v1.Group("/kategori/")
+		{
+			kategoriproduk.GET("/list", middleware.IsAuth(), controllers.ListCategory)
+			kategoriproduk.POST("/tambah-data", middleware.IsAuth(), controllers.TambahKategori)
+			kategoriproduk.PUT("/update/:id", middleware.IsAuth(), controllers.UpdateCategory)
+			kategoriproduk.DELETE("/hapus/:id", middleware.IsAuth(), controllers.HapusKategori)
 		}
 
 		// Route Logout
