@@ -10,10 +10,11 @@ import (
 )
 
 type RegisData struct {
-	User   models.User
-	Bisnis models.Business
-	Gudang models.Warehouse
-	Pala   models.PajakLayanan
+	User        models.User
+	Bisnis      models.Business
+	Gudang      models.Warehouse
+	Pala        models.PajakLayanan
+	MetodeBayar models.PaymentMethod
 }
 
 func RegisterAcc(c *gin.Context) {
@@ -67,6 +68,7 @@ func RegisterAcc(c *gin.Context) {
 	_ = simbis.Branchlimit
 	_ = simbis.Tipe
 
+	// Buat data warehouse
 	gudang := models.Warehouse{
 		BusinessId:     simbis.ID,
 		SubscriptionId: 1,
@@ -79,6 +81,7 @@ func RegisterAcc(c *gin.Context) {
 	}
 	settings.DB.Create(&gudang)
 
+	// Buat Data Pengguna dengan role owner
 	user := models.User{
 		RoleId:      2,
 		BusinessId:  simbis.ID,
@@ -92,6 +95,7 @@ func RegisterAcc(c *gin.Context) {
 	}
 	settings.DB.Create(&user)
 
+	// Buat data default master pajak dan layanan
 	pala := models.PajakLayanan{
 		BusinessId:  simbis.ID,
 		WarehouseId: gudang.ID,
@@ -102,12 +106,24 @@ func RegisterAcc(c *gin.Context) {
 	}
 	settings.DB.Create(&pala)
 
+	// Buat data default metode pembayaran
+	paymentMethod := models.PaymentMethod{
+		BusinessId:  simbis.ID,
+		WarehouseId: gudang.ID,
+		Tipe:        "Tunai",
+		Name:        "Cash",
+		Norek:       0,
+		Admin:       0,
+	}
+	settings.DB.Create(&paymentMethod)
+
 	// Masukan hasil inputan simbis, gudang dan user dalam 1 variabel untuk ditampilkan pada response pendaftaran
 	response := RegisData{
-		User:   user,
-		Bisnis: simbis,
-		Gudang: gudang,
-		Pala:   pala,
+		User:        user,
+		Bisnis:      simbis,
+		Gudang:      gudang,
+		Pala:        pala,
+		MetodeBayar: paymentMethod,
 	}
 
 	// Deklarasi variabel untuk kebutuhan email verifikasi akun baru pengguna

@@ -17,9 +17,22 @@ License: You must have a valid license purchased only from themeforest(the above
         <meta name="description" content="Midone admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
         <meta name="keywords" content="admin template, Midone Admin Template, dashboard template, flat admin template, responsive admin template, web app">
         <meta name="author" content="LEFT4CODE">
-        <title>Pajak & Layanan - Visca POS Webapp</title>
+        <title>List Metode Bayar - Visca POS Webapp</title>
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="/assets/dist/css/app.css" />
+        <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+        <style>
+            /* Menyesuaikan lebar dropdown "Show entries" */
+            .dataTables_length {
+                width: 200px; /* Sesuaikan lebar sesuai kebutuhan Anda */
+            }
+
+            /* Menyesuaikan lebar opsi dropdown */
+            .dataTables_length select {
+                width: 30%; /* Menggunakan lebar penuh */
+                box-sizing: border-box; /* Menambahkan padding dan border ke dalam lebar */
+            }
+        </style>
         <!-- END: CSS Assets-->
     </head>
     <!-- END: Head -->
@@ -164,13 +177,13 @@ License: You must have a valid license purchased only from themeforest(the above
                         </a>
                         <ul class="">
                             <li>
-                                <a href="http://localhost:8080/aplikasi/pengaturan/pajak-layanan" class="menu menu--active">
+                                <a href="http://localhost:8080/aplikasi/pengaturan/pajak-layanan" class="menu ">
                                     <div class="menu__icon"> <i data-lucide="percent"></i> </div>
                                     <div class="menu__title"> Pajak & layanan </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="http://localhost:8080/aplikasi/pengaturan/metode-pembayaran" class="menu">
+                                <a href="http://localhost:8080/aplikasi/pengaturan/metode-pembayaran" class="menu menu--active">
                                     <div class="menu__icon"> <i data-lucide="credit-card"></i> </div>
                                     <div class="menu__title"> Metode Pembayaran </div>
                                 </a>
@@ -350,13 +363,13 @@ License: You must have a valid license purchased only from themeforest(the above
                         </a>
                         <ul class="">
                             <li>
-                                <a href="http://localhost:8080/aplikasi/pengaturan/pajak-layanan" class="side-menu side-menu--active">
+                                <a href="http://localhost:8080/aplikasi/pengaturan/pajak-layanan" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="percent"></i> </div>
                                     <div class="side-menu__title"> Pajak & Layanan </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="http://localhost:8080/aplikasi/pengaturan/metode-pembayaran" class="side-menu">
+                                <a href="http://localhost:8080/aplikasi/pengaturan/metode-pembayaran" class="side-menu side-menu--active">
                                     <div class="side-menu__icon"> <i data-lucide="credit-card"></i> </div>
                                     <div class="side-menu__title"> Metode Pembayaran </div>
                                 </a>
@@ -386,7 +399,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Aplikasi</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Master Pajak & Layanan</li>
+                            <li class="breadcrumb-item active" aria-current="page">List Metode Pembayaran</li>
                         </ol>
                     </nav>
                     <!-- END: Breadcrumb -->
@@ -500,64 +513,36 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- END: Account Menu -->
                 </div>
                 <!-- END: Top Bar -->
-                <div class="intro-y flex items-center mt-8">
+                <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
                     <h2 class="text-lg font-medium mr-auto">
-                        Master Pajak & Layanan
+                        List Metode Pembayaran
                     </h2>
-                </div>
-                <div class="grid grid-cols-12 gap-6 mt-5">
-                    <div class="intro-y col-span-12 lg:col-span-12">
-                        <!-- BEGIN: Vertical Form -->
-                        <div class="intro-y box">
-                            <div class="flex flex-col sm:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                                <h2 class="font-medium text-base mr-auto">
-                                    Form Pajak & Layanan
-                                </h2>
-                            </div>
-                            <div id="vertical-form" class="p-5">
-                                <div class="preview">
-                                    <div class="grid grid-cols-12 gap-x-5">
-                                        <div class="col-span-12 sm:col-span-6 mt-2">
-                                            <div>
-                                                <label for="modal-form-5" class="form-label">Pajak</label>
-                                                <div class="form-check form-switch">
-                                                    <input type="hidden" class="form-control form-id">
-                                                    <input id="checkbox-switch-7" class="form-check-input form-is-tax" type="checkbox">
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <br/>
-                                                <label for="modal-form-5" class="form-label">Nilai Pajak</label>
-                                                <div class="input-group mt-2">
-                                                    <input type="number" class="form-control form-taxval" placeholder="11" aria-label="Price" aria-describedby="input-group-price">
-                                                    <div id="input-group-price" class="input-group-text"><b>%</b></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-span-12 sm:col-span-6 mt-2">
-                                            <div>
-                                                <label for="modal-form-5" class="form-label">Layanan</label>
-                                                <div class="form-check form-switch">
-                                                    <input id="checkbox-switch-7" class="form-check-input form-is-service" type="checkbox">
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <br/>
-                                                <label for="modal-form-5" class="form-label">Nilai Layanan</label>
-                                                <div class="input-group mt-2">
-                                                    <input type="number" class="form-control form-serviceval" placeholder="10" aria-label="Price" aria-describedby="input-group-price">
-                                                    <div id="input-group-price" class="input-group-text"><b>%</b></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary mt-5 btn-simpan">Simpan</button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END: Vertical Form -->
+                    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+                        <button class="btn btn-primary shadow-md mr-2 btn-tambah">Tambah data</button>
                     </div>
                 </div>
+                <!-- BEGIN: HTML Table Data -->
+                <div class="intro-y box p-5 mt-5">
+                    <div class="preview">
+                        <div class="overflow-x-auto">
+                            <table id="data-table" class="table table-striped-5" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Tipe</th>
+                                        <th>Nama Pembayaran</th>
+                                        <th>No Akun</th>
+                                        <th>Biaya Tambahan</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- END: HTML Table Data -->
             </div>
             <!-- END: Content -->
             <!-- BEGIN: Success Change Warehouse Notification Content -->
@@ -578,11 +563,130 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
             </div>
             <!-- END: Notification Content -->
+             <!-- BEGIN: Modal Content -->
+            <div id="header-footer-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- BEGIN: Modal Header -->
+                        <div class="modal-header">
+                            <h2 class="font-medium text-base mr-auto">
+                                Form Tambah Data Metode Pembayaran
+                            </h2>
+                            <a data-tw-dismiss="modal" href="javascript:;"> <i data-lucide="x" class="w-8 h-8 text-gray-500"></i> </a>
+                        </div>
+                        <!-- END: Modal Header -->
+                        <!-- BEGIN: Modal Body -->
+                        <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="modal-form-1" class="form-label">Tipe</label>
+                                <select class="form-select form-tipe" required>
+                                    <option disabled selected> --- Pilih Tipe Pembayaran --- </option>
+                                    <option value="E-Wallet"> E-Wallet </option>
+                                    <option value="EDC"> EDC </option>
+                                    <option value="Transfer Bank"> Transfer Bank </option>
+                                    <option value="QRIS"> QRIS </option>
+                                </select>
+                            </div>
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="fileInput" class="form-label">Metode Pembayaran</label>
+                                <select class="form-select form-metode" required>
+                                    <option disabled selected> --- Pilih Metode Pembayaran --- </option>
+                                </select>
+                            </div>
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="modal-form-2" class="form-label">No Rekening / Akun</label>
+                                <input type="number" class="form-control form-norek" placeholder="1234********" value="0" required>
+                            </div>
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="modal-form-2" class="form-label">Biaya Tambahan</label>
+                                <input type="number" class="form-control form-admin" placeholder="1234********" value="0" required>
+                            </div>
+                        </div>
+                        <!-- END: Modal Body -->
+                        <!-- BEGIN: Modal Footer -->
+                        <div class="modal-footer text-right">
+                            <button type="button" data-dismiss="modal" class="btn btn-outline-secondary w-20 mr-1">Batal</button>
+                            <button type="button" class="btn btn-primary w-20 btn-simpan">Simpan</button>
+                        </div>
+                        <!-- END: Modal Footer -->
+                    </div>
+                </div>
+            </div>
+            <!-- END: Modal Content -->
+            <!-- BEGIN: Success Notification Content -->
+            <div id="success-notification-content" class="toastify-content hidden flex">
+                <i class="text-success" data-lucide="check-circle"></i> 
+                <div class="ml-4 mr-4">
+                    <div class="font-medium">Simpan data metode bayar berhasil!</div>
+                    <div class="text-slate-500 mt-1 pesan-sukses"></div>
+                </div>
+            </div>
+            <!-- END: Success Notification Content -->
+            <!-- BEGIN: Failed Notification Content -->
+            <div id="fail-notification-content" class="toastify-content hidden flex">
+                <i class="text-success" data-lucide="x-circle"></i> 
+                <div class="ml-4 mr-4">
+                    <div class="font-medium">Gagal simpan data metode bayar!</div>
+                    <div class="text-slate-500 mt-1 pesan-gagal"></div>
+                </div>
+            </div>
+            <!-- END: Notification Content -->
+            <!-- BEGIN: Modal Update Content -->
+            <div id="header-update-footer-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- BEGIN: Modal Header -->
+                        <div class="modal-header">
+                            <h2 class="font-medium text-base mr-auto">
+                                Form Ubah Data Metode Bayar
+                            </h2>
+                            <a data-tw-dismiss="modal" href="javascript:;"> <i data-lucide="x" class="w-8 h-8 text-gray-500"></i> </a>
+                        </div>
+                        <!-- END: Modal Header -->
+                        <!-- BEGIN: Modal Body -->
+                        <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="modal-form-1" class="form-label">Tipe</label>
+                                <input type="hidden" class="form-control update-form-id">
+                                <select class="form-select update-form-tipe" required>
+                                    <option disabled selected> --- Pilih Tipe Pembayaran --- </option>
+                                    <option value="E-Wallet"> E-Wallet </option>
+                                    <option value="EDC"> EDC </option>
+                                    <option value="Transfer Bank"> Transfer Bank </option>
+                                    <option value="QRIS"> QRIS </option>
+                                </select>
+                            </div>
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="fileInput" class="form-label">Metode Pembayaran</label>
+                                <select class="form-select update-form-metode" required>
+                                    <option disabled selected> --- Pilih Metode Pembayaran --- </option>
+                                </select>
+                            </div>
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="modal-form-2" class="form-label">No Rekening / Akun</label>
+                                <input type="number" class="form-control update-form-norek" placeholder="1234********" value="0" required>
+                            </div>
+                            <div class="col-span-12 sm:col-span-12">
+                                <label for="modal-form-2" class="form-label">Biaya Tambahan</label>
+                                <input type="number" class="form-control update-form-admin" placeholder="1234********" value="0" required>
+                            </div>
+                        </div>
+                        <!-- END: Modal Body -->
+                        <!-- BEGIN: Modal Footer -->
+                        <div class="modal-footer text-right">
+                            <button type="button" data-dismiss="modal" class="btn btn-outline-secondary w-20 mr-1">Batal</button>
+                            <button type="button" class="btn btn-primary w-20 btn-update">Simpan</button>
+                        </div>
+                        <!-- END: Modal Footer -->
+                    </div>
+                </div>
+            </div>
+            <!-- END: Modal Content -->
             <!-- BEGIN: Success Notification Content -->
             <div id="success-update-notification-content" class="toastify-content hidden flex">
                 <i class="text-success" data-lucide="check-circle"></i> 
                 <div class="ml-4 mr-4">
-                    <div class="font-medium">Update data master pajak layanan berhasil!</div>
+                    <div class="font-medium">Update data metode bayar berhasil!</div>
                     <div class="text-slate-500 mt-1 updateres-sukses"></div>
                 </div>
             </div>
@@ -591,8 +695,48 @@ License: You must have a valid license purchased only from themeforest(the above
             <div id="fail-update-notification-content" class="toastify-content hidden flex">
                 <i class="text-success" data-lucide="x-circle"></i> 
                 <div class="ml-4 mr-4">
-                    <div class="font-medium">Gagal update data master pajak layanan!</div>
+                    <div class="font-medium">Gagal update data metode bayar!</div>
                     <div class="text-slate-500 mt-1 updateres-gagal"></div>
+                </div>
+            </div>
+            <!-- END: Notification Content -->
+            <!-- BEGIN: Modal Delete Content -->
+            <div id="delete-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body p-0">
+                            <div class="p-5 text-center">
+                                <i data-lucide="x-circle" class="w-16 h-16 text-danger mx-auto mt-3"></i> 
+                                <div class="text-3xl mt-5">Hapus Data Metode Bayar</div>
+                                <div class="text-slate-500 mt-2">
+                                    Apa kamu yakin akan menghapus data Metode Bayar ini? 
+                                    <br>
+                                    data metode bayar yang terhapus tidak bisa dikembalikan.
+                                </div>
+                            </div>
+                            <div class="px-5 pb-8 text-center">
+                                <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Batakkan</button>
+                                <button type="button" class="btn btn-danger w-24 hapus-btn">Hapus</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- BEGIN: Notification Content -->
+            <div id="success-hapus-notification-content" class="toastify-content hidden flex">
+                <i class="text-success" data-lucide="check-circle"></i> 
+                <div class="ml-4 mr-4">
+                    <div class="font-medium">Hapus data metode bayar berhasil!</div>
+                    <div class="text-slate-500 mt-1 hapus-sukses"></div>
+                </div>
+            </div>
+            <!-- END: Notification Content -->
+            <!-- BEGIN: Notification Content -->
+            <div id="failed-hapus-notification-content" class="toastify-content hidden flex">
+                <i class="text-success" data-lucide="x-circle"></i> 
+                <div class="ml-4 mr-4">
+                    <div class="font-medium">Hapus data metode bayar gagal!</div>
+                    <div class="text-slate-500 mt-1 hapus-gagal"></div>
                 </div>
             </div>
             <!-- END: Notification Content -->
@@ -600,6 +744,8 @@ License: You must have a valid license purchased only from themeforest(the above
         
         <!-- BEGIN: JS Assets-->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.29.1/dist/feather.min.js"></script>
         <script src="/assets/dist/js/app.js"></script>
         <script src="/assets/src/toastify.js"></script>
         <script>
@@ -639,8 +785,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                 // Cek Token
                 if (token) {
-
-                    // Panggil data cabang
+                    // Panggil data list cabang
                     var url = 'http://localhost:8080/api/v1/dashboard/support/cabang';
                     fetch(url, {
                         method: 'GET',
@@ -680,7 +825,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         var id =  jQuery(this).val()
                         // Kirim permintaan pembaruan produk ke API
                         jQuery.ajax({
-                            url: 'http://localhost:8080/api/v1/dashboard/ubah-cabang/',
+                            url: 'http://localhost:8080/api/v1/dashboard/ubah-cabang/' + id,
                             type: 'PUT',
                             data: formData,
                             processData: false,
@@ -745,68 +890,67 @@ License: You must have a valid license purchased only from themeforest(the above
                         })
                     })
 
-                    // Panggil data master pajak layanan
-                    var url = 'http://localhost:8080/api/v1/pengaturan/pajak-layanan/master-data';
-                    fetch(url, {
-                        method: 'GET',
-                        headers: {
-                            'Authorization': 'Bearer ' + token
-                        }
-                    }).then(response => response.json()).then(hasil => {
-                        var idpala = hasil.data.ID
-                        var is_tax = hasil.data.IsTax
-                        var is_service = hasil.data.IsService
-                        var taxval = hasil.data.Taxval
-                        var serviceval = hasil.data.Serviceval
+                    // Fungsi button tambah ketika di klik akan memunculkan modal
+                    jQuery('.btn-tambah').click(function() {
+                        // Show the modal
+                        const el = document.querySelector("#header-footer-modal-preview");
+                        const modal = tailwind.Modal.getOrCreateInstance(el);
+                        modal.show(); 
+                    })
 
-                        if(is_tax == false)
-                        {
-                            jQuery(".form-is-tax").prop("checked", false);
-                        }else{
-                            jQuery(".form-is-tax").prop("checked", true);
-                        }
+                    jQuery(".form-tipe").change(function() {
+                        var form_method = jQuery(this).val()
 
-                        if(is_service == false)
-                        {
-                            jQuery(".form-is-service").prop("checked", false);
-                        }else{
-                            jQuery(".form-is-service").prop("checked", true);
-                        }
+                        // Panggil data list role
+                        var url = 'http://localhost:8080/api/v1/pengaturan/payment-method/support/master-payment/' + form_method;
+                        fetch(url, {
+                            method: 'GET',
+                            headers: {
+                                'Authorization': 'Bearer ' + token
+                            }
+                        }).then(response => response.json()).then(data => {
+                            var selectRole = jQuery('.form-metode');
+                            selectRole.empty()
 
-                        jQuery('.form-id').val(idpala)
-                        jQuery('.form-taxval').val(taxval)
-                        jQuery('.form-serviceval').val(serviceval)
-                    }).catch(error => {
-                        console.error('Error:', error);
-                    });
+                            // Iterasi melalui data dan membuat objek untuk setiap entri
+                            jQuery.each(data, function(index, item) {
+                                for (let i = 0; i < item.length; i++) {
+                                    selectRole.append('<option value="' + item[i].name + '">' + item[i].name + '</option>');
+                                }
+                            });
+                        }).catch(error => {
+                            console.error('Error:', error);
+                        })
+                    })
 
-                    jQuery(".btn-simpan").click(function() {
-                        // Ajax update
-                        var updateid = jQuery('.form-id').val();
-                        var is_tax = jQuery('.form-is-tax').prop('checked');
-                        var taxval = jQuery('.form-taxval').val();
-                        var is_service = jQuery('.form-is-service').prop('checked');
-                        var serviceval = jQuery('.form-serviceval').val();
+                    jQuery('.btn-simpan').click(function() {
+                        // Show the modal
+                        event.preventDefault(); // Prevent default form submission
 
-                        // Kirim permintaan pembaruan produk ke API
+                        // Get form data
+                        var tipe = jQuery(".form-tipe").val();
+                        var name = jQuery(".form-metode").val();
+                        var norek = jQuery(".form-norek").val();
+                        var admin = jQuery(".form-admin").val();
+
+                        // Send data using Ajax
                         jQuery.ajax({
-                            url: 'http://127.0.0.1:8080/api/v1/pengaturan/pajak-layanan/update/' + updateid,
-                            type: "PUT",
+                            url: 'http://localhost:8080/api/v1/pengaturan/payment-method/tambah-data',
+                            type: "POST",
                             beforeSend: function(xhr) {
                                 xhr.setRequestHeader('Authorization', 'Bearer ' + token);
                             },
-                            contentType: 'application/x-www-form-urlencoded',
                             data: {
-                                is_tax: is_tax,
-                                taxval: taxval,
-                                is_service: is_service,
-                                serviceval: serviceval,
+                                tipe: tipe,
+                                name: name,
+                                norek: norek,
+                                admin: admin,
                             },
                             success: function(response) {
                                 // Show the modal
-                                jQuery('.updateres-sukses').text(response.message);
+                                jQuery('.pesan-sukses').text(response.message);
                                 Toastify({
-                                    node: $("#success-update-notification-content")
+                                    node: $("#success-notification-content")
                                         .clone()
                                         .removeClass("hidden")[0],
                                     duration: 3000,
@@ -822,26 +966,296 @@ License: You must have a valid license purchased only from themeforest(the above
                                 }, 3000); // 3000 milliseconds = 3 seconds
                             },
                             error: function(xhr, status, error) {
-                                // Show the modal
-                                jQuery('.updateres-gagal').text(response.message);
+                                var hpes = JSON.parse(xhr.responseText);
+                                jQuery('.pesan-gagal').text(hpes.message);
                                 Toastify({
-                                    node: $("#fail-update-notification-content")
+                                    node: $("#fail-notification-content")
                                         .clone()
                                         .removeClass("hidden")[0],
-                                    duration: 5000,
+                                    duration: 4000,
                                     newWindow: true,
                                     close: true,
                                     gravity: "top",
                                     position: "right",
                                     stopOnFocus: true,
                                 }).showToast();
+                            }
+                        }); 
+                    })
 
-                                setTimeout(function() {
-                                    location.reload();
-                                }, 5000); // 3000 milliseconds = 3 seconds
+                    // Ambil Data Admin
+                    var url = 'http://localhost:8080/api/v1/pengaturan/payment-method/list';
+                    fetch(url, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': 'Bearer ' + token
+                        }
+                    }).then(response => response.json()).then(data => {
+                        // Panggil fungsi untuk mengisi data ke dalam tbody DataTable
+                        populateDataTable(data);
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+
+                    function populateDataTable(data) {
+                        var tableBody = jQuery("#data-body");
+
+                        // Bersihkan isi tbody sebelum mengisi dengan data baru
+                        tableBody.empty();
+
+                        var rowDataArray = []; // Variabel untuk menyimpan objek baris
+
+                        // Perulangan menggunakan jQuery.each()
+                        jQuery.each(data, function(index, item) {
+                            for (let i = 0; i < item.length; i++) {
+                                // // Create an object with the desired properties
+                                var rowData = {
+                                    id: item[i].id,
+                                    business_id: item[i].business_id,
+                                    warehouse_id: item[i].warehouse_id,
+                                    tipe: item[i].tipe,
+                                    name: item[i].name,
+                                    norek: item[i].norek,
+                                    admin: item[i].admin,
+                                };
+
+                                // Push the object to the data array
+                                rowDataArray.push(rowData);
                             }
                         });
-                    })
+
+                        var dataTable = jQuery('#data-table').DataTable();
+                        if (dataTable) {
+                            // Destroy DataTable
+                            dataTable.destroy();
+                        }
+
+                        // Initialize DataTable
+                        var table = jQuery('#data-table').DataTable({
+                            data: rowDataArray,
+                            columns: [
+                                { data: 'id'},
+                                { data: 'tipe'},
+                                { data: 'name'},
+                                { data: 'norek'},
+                                { data: 'admin'},
+                                {
+                                    data: null,
+                                    render: function (data, type, row) {
+
+                                        if (data.tipe == "Tunai")
+                                        {
+                                            // Create action buttons
+                                            var editBtn = '<button class="btn btn-primary btn-edit" disabled><i data-feather="edit" class="w-4 h-4"></i></button>';
+                                            var deleteBtn = '<button class="btn btn-danger btn-delete" disabled><i data-feather="trash-2" class="w-4 h-4"></i></button>';
+
+                                            // Combine the buttons
+                                            var actions = editBtn + '  ||  ' + deleteBtn;
+                                            return actions;
+                                        }else{
+                                            // Create action buttons
+                                            var editBtn = '<button class="btn btn-primary btn-edit" data-id="' + data.id + '" data-tipe="' + data.tipe + '" data-name="' + data.name + '" data-norek="' + data.norek + '" data-admin="' + data.admin + '"><i data-feather="edit" class="w-4 h-4"></i></button>';
+                                            var deleteBtn = '<button class="btn btn-danger btn-delete" data-id="' + data.id + '"><i data-feather="trash-2" class="w-4 h-4"></i></button>';
+
+                                            // Combine the buttons
+                                            var actions = editBtn + '  ||  ' + deleteBtn;
+                                            return actions;
+                                        }
+                                    }
+                                }
+                            ],
+                            "drawCallback": function( settings ) {
+                                feather.replace();
+                            }
+                        });
+
+                        // Passing data list row ke dalam modal update
+                        jQuery('#data-table').on('click', '.btn-edit', function() {
+                            // Show the modal
+                            const el = document.querySelector("#header-update-footer-modal-preview");
+                            const modal = tailwind.Modal.getOrCreateInstance(el);
+                            modal.show();
+
+                            var id = jQuery(this).attr("data-id");
+                            var tipe = jQuery(this).attr("data-tipe");
+                            var name = jQuery(this).attr("data-name");
+                            var norek = jQuery(this).attr("data-norek");
+                            var admin = jQuery(this).attr("data-admin");
+
+                            // Panggil data list master payment
+                            var url = 'http://localhost:8080/api/v1/pengaturan/payment-method/support/master-payment/' + tipe;
+                            fetch(url, {
+                                method: 'GET',
+                                headers: {
+                                    'Authorization': 'Bearer ' + token
+                                }
+                            }).then(response => response.json()).then(data => {
+                                var updateSelect = jQuery('.update-form-metode');
+                                updateSelect.empty()
+
+                                // Iterasi melalui data dan membuat objek untuk setiap entri
+                                jQuery.each(data, function(index, item) {
+                                    for (let i = 0; i < item.length; i++) {
+                                        updateSelect.append('<option value="' + item[i].name + '">' + item[i].name + '</option>');
+                                    }
+                                });
+                            }).catch(error => {
+                                console.error('Error:', error);
+                            })
+
+                            // Handle edit action
+                            jQuery('.update-form-id').val(id);
+                            jQuery('.update-form-tipe').val(tipe);
+                            jQuery('.update-form-metode').val(name);
+                            jQuery('.update-form-norek').val(norek);
+                            jQuery('.update-form-admin').val(admin);
+                        });
+
+                        jQuery('.update-form-tipe').change(function(){
+                            var ini_metode = jQuery(this).val()
+
+                            // Panggil data list master payment
+                            var url = 'http://localhost:8080/api/v1/pengaturan/payment-method/support/master-payment/' + ini_metode;
+                            fetch(url, {
+                                method: 'GET',
+                                headers: {
+                                    'Authorization': 'Bearer ' + token
+                                }
+                            }).then(response => response.json()).then(data => {
+                                var newSelect = jQuery('.update-form-metode');
+                                newSelect.empty()
+
+                                // Iterasi melalui data dan membuat objek untuk setiap entri
+                                jQuery.each(data, function(index, item) {
+                                    for (let i = 0; i < item.length; i++) {
+                                        newSelect.append('<option value="' + item[i].name + '">' + item[i].name + '</option>');
+                                    }
+                                });
+                            }).catch(error => {
+                                console.error('Error:', error);
+                            })
+                        })
+
+                        // Tombol Update Admin
+                        jQuery(".btn-update").click(function() {
+                            // Ajax update
+                            var updateid = jQuery('.update-form-id').val();
+                            var tipe = jQuery('.update-form-tipe').val();
+                            var name = jQuery('.update-form-metode').val();
+                            var norek = jQuery('.update-form-norek').val();
+                            var admin = jQuery('.update-form-admin').val();
+
+                            // Kirim permintaan pembaruan produk ke API
+                            jQuery.ajax({
+                                url: 'http://127.0.0.1:8080/api/v1/pengaturan/payment-method/update/' + updateid,
+                                type: "PUT",
+                                beforeSend: function(xhr) {
+                                    xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+                                },
+                                contentType: 'application/x-www-form-urlencoded',
+                                data: {
+                                    tipe: tipe,
+                                    name: name,
+                                    norek: norek,
+                                    admin: admin,
+                                },
+                                success: function(response) {
+                                    // Show the modal
+                                    jQuery('.updateres-sukses').text(response.message);
+                                    Toastify({
+                                        node: $("#success-update-notification-content")
+                                            .clone()
+                                            .removeClass("hidden")[0],
+                                        duration: 3000,
+                                        newWindow: true,
+                                        close: true,
+                                        gravity: "top",
+                                        position: "right",
+                                        stopOnFocus: true,
+                                    }).showToast();
+
+                                    setTimeout(function() {
+                                        location.reload();
+                                    }, 3000); // 3000 milliseconds = 3 seconds
+                                },
+                                error: function(xhr, status, error) {
+                                    // Show the modal
+                                    jQuery('.updateres-gagal').text(response.message);
+                                    Toastify({
+                                        node: $("#fail-update-notification-content")
+                                            .clone()
+                                            .removeClass("hidden")[0],
+                                        duration: 5000,
+                                        newWindow: true,
+                                        close: true,
+                                        gravity: "top",
+                                        position: "right",
+                                        stopOnFocus: true,
+                                    }).showToast();
+
+                                    setTimeout(function() {
+                                        location.reload();
+                                    }, 5000); // 3000 milliseconds = 3 seconds
+                                }
+                            });
+                        });
+
+                        // Fungsi Tombol hapus
+                        jQuery('#data-table').on('click', '.btn-delete', function() {
+                            var id = jQuery(this).attr("data-id");
+
+                            // Show the modal
+                            const el = document.querySelector("#delete-modal-preview");
+                            const modal = tailwind.Modal.getOrCreateInstance(el);
+                            modal.show();
+
+                            jQuery('.hapus-btn').click(function() {
+                                // Ajax delete Api
+                                jQuery.ajax({
+                                    url: 'http://127.0.0.1:8080/api/v1/staff/hapus/' + id,
+                                    type: 'DELETE',
+                                    headers: {
+                                        'Authorization': 'Bearer ' + token
+                                    },
+                                    success: function(response) {
+                                        // Show the modal
+                                        jQuery('.hapus-sukses').text(response.message);
+                                        Toastify({
+                                            node: $("#success-hapus-notification-content")
+                                                .clone()
+                                                .removeClass("hidden")[0],
+                                            duration: 3000,
+                                            newWindow: true,
+                                            close: true,
+                                            gravity: "top",
+                                            position: "right",
+                                            stopOnFocus: true,
+                                        }).showToast();
+
+                                        setTimeout(function() {
+                                            location.reload();
+                                        }, 3000); // 3000 milliseconds = 3 seconds
+                                    },
+                                    error: function(xhr, status, error) {
+                                        // Show the modal
+                                        var hpes = JSON.parse(xhr.responseText);
+                                        jQuery('.hapus-gagal').text(hpes.message);
+                                        Toastify({
+                                            node: $("#fail-hapus-notification-content")
+                                                .clone()
+                                                .removeClass("hidden")[0],
+                                            duration: 5000,
+                                            newWindow: true,
+                                            close: true,
+                                            gravity: "top",
+                                            position: "right",
+                                            stopOnFocus: true,
+                                        }).showToast();
+                                    }
+                                });
+                            });
+                        });
+                    }
 
                     jQuery('.btn-logout').click(function() {
                         var url = 'http://localhost:8080/api/v1/logout';
@@ -884,10 +1298,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                 position: "right",
                                 stopOnFocus: true,
                             }).showToast();
-
-                            // setTimeout(function() {
-                            //     location.reload();
-                            // }, 3000); // 3000 milliseconds = 3 seconds
                         });
                     })
                 }else{

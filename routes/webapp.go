@@ -51,6 +51,9 @@ func WebAppRoute() {
 	router.GET("/aplikasi/pengaturan/pajak-layanan", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "PajakLayanan.tmpl", nil) // Render template PajakLayanan.tmpl
 	})
+	router.GET("/aplikasi/pengaturan/metode-pembayaran", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "MetodeBayar.tmpl", nil) // Render template MetodeBayar.tmpl
+	})
 	router.GET("/aplikasi/produk/kategori-produk", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "KategoriProduk.tmpl", nil) // Render template KategoriProduk.tmpl
 	})
@@ -74,6 +77,14 @@ func WebAppRoute() {
 				subscriptionDev.GET("/list", controllers.ListDevSubcription)
 				subscriptionDev.PUT("/update/:id", controllers.UpdateDevSubscription)
 				subscriptionDev.DELETE("/hapus/:id", controllers.HapusDevSubscription)
+			}
+
+			maparoute := devs.Group("/master-payment/")
+			{
+				maparoute.GET("/list", controllers.ListMasterPayment)
+				maparoute.POST("/create", controllers.CreateMasterPayment)
+				maparoute.PUT("/update/:id", controllers.UpdateMasterPayment)
+				maparoute.DELETE("/hapus/:id", controllers.HapusMasterPayment)
 			}
 
 			devs.POST("/kirim-email", controllers.TestKirimEmail)
@@ -111,10 +122,22 @@ func WebAppRoute() {
 			clientPage.DELETE("/hapus/:id", middleware.IsAuth(), controllers.HapusPelanggan)
 		}
 
-		pajakLayanan := v1.Group("/pajak-layanan/")
+		pengaturan := v1.Group("/pengaturan/")
 		{
-			pajakLayanan.GET("/master-data", middleware.IsAuth(), controllers.GetDataPala)
-			pajakLayanan.PUT("/update/:id", middleware.IsAuth(), controllers.UpdatePala)
+			pajakLayanan := pengaturan.Group("/pajak-layanan/")
+			{
+				pajakLayanan.GET("/master-data", middleware.IsAuth(), controllers.GetDataPala)
+				pajakLayanan.PUT("/update/:id", middleware.IsAuth(), controllers.UpdatePala)
+			}
+
+			pembayaran := pengaturan.Group("/payment-method/")
+			{
+				pembayaran.GET("/list", middleware.IsAuth(), controllers.ListPaymentMethod)
+				pembayaran.POST("/tambah-data", middleware.IsAuth(), controllers.CreatePaymentMethod)
+				pembayaran.PUT("/update/:id", middleware.IsAuth(), controllers.UpdatePaymentMethod)
+				pembayaran.DELETE("/hapus/:id", middleware.IsAuth(), controllers.HapusPaymentMethod)
+				pembayaran.GET("/support/master-payment/:method", middleware.IsAuth(), controllers.SupportMasterPayment)
+			}
 		}
 
 		kategoriproduk := v1.Group("/kategori/")
